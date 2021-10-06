@@ -1,3 +1,3 @@
 # My Test Server
 
-Click [Demo](git@github.com:Sekhno/testServer.git)
+Click [Demo](https://sekhno-server.herokuapp.com/)
