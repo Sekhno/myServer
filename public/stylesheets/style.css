@@ -1,3 +1,5 @@
+@import './header.css';
+
 html {
   margin: 0;
   padding: 0;
@@ -8,72 +10,8 @@ html {
 }
 
 body {
-  color: transparent;
-  animation: text-color-change 0.1s infinite;
-  font-size: 16px;
-  line-height: 24px;
-  font-family: monospace;
   margin: 0;
   padding: 0;
-  text-shadow: 0 0 3px rgba(10, 100, 200, 0.8);
-}
-
-body::before {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: linear-gradient(#004 5%, #000);
-  background-color: #002;
-  z-index: -1;
-  content: '';
-}
-
-.table {
-  text-align: left;
-  margin: 0 auto;
-  padding: 10px;
-}
-
-a {
-  color: #25f;
-  animation: text-color-change 0.1s infinite;
-}
-
-a:hover {
-  color: #006;
-  text-decoration: underline;
-}
-
-p {
-  margin: 16px 0;
-}
-
-.signature {
-  color: #00a;
-  animation: text-color-change 0.1s infinite;
-  text-align: right;
-  font-size: 1.6em;
-  font-weight: 100;
-}
-
-.cursor {
-  animation: blinking 1s infinite;
-}
-
-@keyframes blinking {
-  50% {
-    opacity: 0;
-  }
-}
-
-@keyframes text-color-change {
-  10% {
-    color: #05a;
-  }
-  66% {
-    color: #02b;
-  }
+  min-height: 100%;
 }
 

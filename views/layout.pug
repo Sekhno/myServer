@@ -8,4 +8,10 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     meta(name="description", content= list)
   body
+    header.header
+      button(class=['header-btn', 'header-menu']) Menu
+      div.logo LogoApp 
+      button(class=['header-btn', 'header-catalog']) Catalog 
+      div(class='header-search') 
+        input(type='text', class='header-search__input')
     block content
