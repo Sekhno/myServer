@@ -1,17 +1,11 @@
 extends layout
 
 block content
+  
   div(id='content')
     table(class='table')
-      tr
-        td
-          p= 'Hello! This is my personal website. Nice to see you here!'
-          p
-            span= 'My accounts: '
-            a(href='https://github.com/Sekhno')= 'GitHub'
-            span= ', '
-            a(href='https://www.linkedin.com/in/dmitry-sekhno-bb0a37b7/')= 'LinkedIn'
-            span= ', '
-          p
-            span= 'Want to send me?  '
-            a(href='./chat')= 'Wellcome to my chat'
+      each val, index in list
+        tr
+          td= val.id 
+          td= val.title 
+          td= val.description
