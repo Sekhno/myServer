@@ -1,4 +1,13 @@
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.header-search {
+    flex-grow: 1;
+}
+
+.header-search__input {
+    width: 100%;
 }
