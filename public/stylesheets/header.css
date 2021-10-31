@@ -11,3 +11,13 @@
 .header-search__input {
     width: 100%;
 }
+
+.header-actions ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.header-actions li {
+    margin: 0 1rem;
+}
