@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 function getList() {
   return new Promise((resolve) => setTimeout(() => {
@@ -7,7 +7,7 @@ function getList() {
       [
         {
           id: 1,
-          title: 'Angular 12',
+          title: 'Angular 17',
           description: 'Изучить фреймворк!'
         },
         {
@@ -28,7 +28,7 @@ function getList() {
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  res.render('index', { title: 'Dmitry Sekhno', list: await getList() });
+  res.render('landing', { title: 'Dmitry Sekhno', list: await getList() });
 });
 
 module.exports = router;
