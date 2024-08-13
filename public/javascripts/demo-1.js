@@ -183,10 +183,6 @@
     }
 
     {
-
-        // for (let key in TweenLite) {
-        //     console.log(key);
-        // }
         const title = document.querySelector('.main-title');
 
         title.addEventListener('click', function() {
@@ -200,7 +196,7 @@
                 onUpdate: function() {
                 // title.style.opacity = `${cur--/ sec}`;
                 }, onComplete: function() {
-                    // window.location.href = href + 'chat';
+                    window.location.href = href + 'todo';
                 }
             })
         });
