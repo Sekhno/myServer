@@ -3,27 +3,29 @@ const {readItems, createItem, updateItem, deleteItem} = require("../core/crud");
 const {insertItem, fetchAllDocuments} = require("../core/mongodb");
 const router = express.Router();
 
-
-//Виклик функції для вставки даних
-// const itemName = 'Sample Item';
-// const itemDescription = 'This is a sample description';
-// const itemImage = 'base';
-// insertItem(itemName, itemDescription, itemImage).then(() => {
-//   console.log('insert Item Complete')
-// });
-//
-// setTimeout(() => {
-//   fetchAllDocuments().then((documents) => {
-//     console.log(documents);
-//   })
-//
-// }, 5000);
-
+const path = require('path');
+const fs = require('fs');
 
 
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
   res.render('todo', {title: 'To Do', items: await getItems()});
+});
+
+router.get('/audio', (req, res) => {
+  const file = path.join(__dirname, '../storage/audio/test.mp3');
+
+  fs.access(file, fs.constants.F_OK, (err) => {
+    if (err) {
+      res.status(404).send('Audio file not found');
+      return;
+    }
+
+    res.setHeader('Content-Type', 'audio/mpeg');
+    const stream = fs.createReadStream(file);
+    stream.pipe(res);
+  });
+
 });
 
 function  getItems() {
@@ -86,6 +88,5 @@ router.delete('/items/:id', (req, res) => {
     }
   })
 })
-
 
 module.exports = router;

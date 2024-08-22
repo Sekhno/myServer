@@ -74,4 +74,21 @@
             }
         })
     }
+
+    setTimeout(() => {
+        fetch('/todo/audio', {
+            method: 'GET',
+        }).then(r => r.blob()).then(async (blob) => {
+            const context = new AudioContext();
+
+            const source = context.createBufferSource();
+            source.buffer = await context.decodeAudioData(await blob.arrayBuffer());
+            source.connect(context.destination);
+
+
+            document.addEventListener('click', (e) => {
+                source.start(0);
+            }, {once: true});
+        })
+    }, 3000)
 })()

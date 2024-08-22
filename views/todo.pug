@@ -11,6 +11,16 @@ html
     link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH", crossorigin="anonymous")
     meta(name="description", content= items)
   body
+    nav(class="navbar navbar-expand-lg bg-primary")
+      div(class="container-fluid")
+        a(class="navbar-brand text-light" href="#") Dmytro Sekhno
+        button(class="navbar-toggler", type="button", data-bs-toggle="collapse", data-bs-target="#navbarSupportedContent", aria-controls="navbarSupportedContent", aria-expanded="false", aria-label="Toggle navigation")
+          span(class="navbar-toggler-icon")
+        div(class="collapse navbar-collapse", id="navbarSupportedContent")
+          ul(class="navbar-nav me-auto mb-2 mb-lg-0")
+            li(class="nav-item")
+              a(class="nav-link active text-light", aria-current="page", href="#") Home
+
     form(class="m-3", action="/todo/items" method="post", id="myForm")
       div(class="mb-3")
         label(for="name", class="form-label w-100")='Name'
@@ -39,4 +49,4 @@ html
 
 
     script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js", integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz", crossorigin="anonymous")
-    script(src="javascripts/todo.js")
+    script(src="/javascripts/todo.js")
