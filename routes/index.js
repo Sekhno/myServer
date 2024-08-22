@@ -28,7 +28,7 @@ function getList() {
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  res.render('landing', { title: 'Dmitry Sekhno', list: await getList() });
+  res.render('index', { title: 'Internet Shop', list: await getList() });
 });
 
 module.exports = router;

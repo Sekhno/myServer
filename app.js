@@ -6,8 +6,6 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 
 const indexRouter = require('./routes/index');
-const todoRouter = require('./routes/todo');
-const authRouter = require('./routes/auth');
 
 const app = express();
 
@@ -25,8 +23,6 @@ app.use(bodyParser.json({ limit: '50mb' })); // Збільшуємо допус�
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true })); // Збільшуємо допустимий розмір URL-
 
 app.use('/', indexRouter);
-app.use('/todo', todoRouter);
-app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
