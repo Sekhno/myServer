@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign({ email: user.email }, secretKey, { expiresIn: '1h' });
-    res.cookie('token', token, { httpOnly: true, secure: true });
+    res.cookie('token', token, { httpOnly: true, secure: false });
     res.send({ message: 'Successfully registered' });
 });
 
