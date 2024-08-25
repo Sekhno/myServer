@@ -24,14 +24,21 @@ router.use(async (req, res, next) => {
     }
 });
 
-router.get('/profile', async (req, res, next) => {
-    console.log('req.user', req.user)
+router.get('/dashboard', async (req, res) => {
+    res.render('dashboard', {
+        title: 'Dashboard',
+        user: req.user,
+    });
+});
 
+router.get('/profile', async (req, res) => {
     res.render('profile', {
         title: 'Profile',
         user: req.user,
     });
 });
+
+
 
 // router.post('/logout', (req, res) => {
 //     res

@@ -17,10 +17,12 @@ router.use(async (req, res, next) => {
       next()
     } catch (error) {
       console.error('Помилка при розшифруванні токена:', error.message);
-      next(error)
+      // next(error)
+      next()
     }
   }
   else {
+    console.log('no token')
     next()
   }
 });

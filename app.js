@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
 
 const accountRouter = require('./routes/account');
+const apiAccountRouter = require('./routes/crud/account');
 
 const productRouter = require('./routes/product');
 const apiProductRouter = require('./routes/crud/product');
@@ -16,7 +17,7 @@ const apiProductRouter = require('./routes/crud/product');
 const registerRouter = require('./routes/register');
 const apiRegisterRouter = require('./routes/crud/register');
 
-
+const storageRouter = require('./routes/storage');
 
 const backEndRouter = require('./routes/back-end');
 
@@ -46,6 +47,9 @@ app.use('/register', registerRouter);
 app.use('/api/v1/register', apiRegisterRouter);
 
 app.use('/account', accountRouter);
+app.use('/api/v1/account', apiAccountRouter);
+
+app.use('/storage', storageRouter);
 
 app.use('/admin', backEndRouter);
 

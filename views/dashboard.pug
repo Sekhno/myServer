@@ -1,0 +1,612 @@
+extends layout
+
+block content
+    // loader start
+    include loader
+    // loader end
+    // header start
+    include header
+    // header end
+    // breadcrumb start
+    .breadcrumb-section
+        .container
+            .row
+                .col-sm-6
+                    .page-title
+                        h2 dashboard
+                .col-sm-6
+                    nav.theme-breadcrumb(aria-label='breadcrumb')
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='/') Home
+                            li.breadcrumb-item.active(aria-current='page') dashboard
+    // breadcrumb End
+    // dashboard section start
+    section.dashboard-section.section-b-space.user-dashboard-section
+        .container
+            .row
+                .col-lg-3
+                    .dashboard-sidebar
+                        .profile-top
+                            .profile-image
+                                img.img-fluid(src=user.details.avatar alt='')
+                            .profile-detail
+                                h5=user.name
+                                h6=user.email
+                        .faq-tab
+                            ul#top-tab.nav.nav-tabs(role='tablist')
+                                li.nav-item
+                                    a.nav-link.active(data-bs-toggle='tab' data-bs-target='#info') Account Info
+                                li.nav-item
+                                    a.nav-link(data-bs-toggle='tab' data-bs-target='#address') Address Book
+                                li.nav-item
+                                    a.nav-link(data-bs-toggle='tab' data-bs-target='#orders') My Orders
+                                li.nav-item
+                                    a.nav-link(data-bs-toggle='tab' data-bs-target='#wishlist') My Wishlist
+                                li.nav-item
+                                    a.nav-link(data-bs-toggle='tab' data-bs-target='#payment') Saved Cards
+                                li.nav-item
+                                    a.nav-link(data-bs-toggle='tab' data-bs-target='#profile') Profile
+                                li.nav-item
+                                    a.nav-link(data-bs-toggle='tab' data-bs-target='#security') Security
+                                li.nav-item
+                                    a.nav-link(href='') Log Out
+                .col-lg-9
+                    #top-tabContent.faq-content.tab-content
+                        #info.tab-pane.fade.show.active
+                            .counter-section
+                                .welcome-msg
+                                    h4 Hello, #{user.name} !
+                                    p
+                                        | From your My Account Dashboard you have the ability to view a snapshot of your
+                                        | recent
+                                        | account activity and update your account information. Select a link below to
+                                        | view or
+                                        | edit information.
+                                .row
+                                    .col-md-4
+                                        .counter-box
+                                            img.img-fluid(src='/assets/images/icon/dashboard/sale.png')
+                                            div
+                                                h3 25
+                                                h5 Total Order
+                                    .col-md-4
+                                        .counter-box
+                                            img.img-fluid(src='/assets/images/icon/dashboard/homework.png')
+                                            div
+                                                h3 5
+                                                h5 Pending Orders
+                                    .col-md-4
+                                        .counter-box
+                                            img.img-fluid(src='/assets/images/icon/dashboard/order.png')
+                                            div
+                                                h3 50
+                                                h5 Wishlist
+                                .box-account.box-info
+                                    .box-head
+                                        h4 Account Information
+                                    .row
+                                        .col-sm-6
+                                            .box
+                                                .box-title
+                                                    h3 Contact Information
+                                                    a(href='/account/profile') Edit
+                                                .box-content
+                                                    h6=user.name
+                                                    h6=user.email
+                                                    h6
+                                                        a(href='#') Change Password
+                                        .col-sm-6
+                                            .box
+                                                .box-title
+                                                    h3 Newsletters
+                                                    a(href='#') Edit
+                                                .box-content
+                                                    p You are currently not subscribed to any newsletter.
+                                    .box.mt-3
+                                        .box-title
+                                            h3 Address Book
+                                            a(href='#') Manage Addresses
+                                        .row
+                                            .col-sm-6
+                                                h6 Default Billing Address
+                                                address
+                                                    | You have not set a default billing address.
+                                                    br
+                                                    a(href='#')
+                                                        | Edit
+                                                        | Address
+                                            .col-sm-6
+                                                h6 Default Shipping Address
+                                                address
+                                                    | You have not set a default shipping address.
+                                                    br
+                                                    a(href='#') Edit Address
+                        #address.tab-pane.fade
+                            .row
+                                .col-12
+                                    .card.mt-0
+                                        .card-body
+                                            .top-sec
+                                                h3 Address Book
+                                                a.btn.btn-sm.btn-solid(href='#') + add new
+                                            .address-book-section
+                                                .row.g-4
+                                                    .select-box.active.col-xl-4.col-md-6
+                                                        .address-box
+                                                            .top
+                                                                h6
+                                                                    | mark jecno
+                                                                    span home
+                                                            .middle
+                                                                .address
+                                                                    p 549 Sulphur Springs Road
+                                                                    p Downers Grove, IL
+                                                                    p 60515
+                                                                .number
+                                                                    p
+                                                                        | mobile:
+                                                                        span +91 123 - 456 - 7890
+                                                            .bottom
+                                                                a.bottom_btn(href='javascript:void(0)' data-bs-target='#edit-address' data-bs-toggle='modal') edit
+                                                                a.bottom_btn(href='#') remove
+                                                    .select-box.col-xl-4.col-md-6
+                                                        .address-box
+                                                            .top
+                                                                h6
+                                                                    | mark jecno
+                                                                    span office
+                                                            .middle
+                                                                .address
+                                                                    p 549 Sulphur Springs Road
+                                                                    p Downers Grove, IL
+                                                                    p 60515
+                                                                .number
+                                                                    p
+                                                                        | mobile:
+                                                                        span +91 123 - 456 - 7890
+                                                            .bottom
+                                                                a.bottom_btn(href='javascript:void(0)' data-bs-target='#edit-address' data-bs-toggle='modal') edit
+                                                                a.bottom_btn(href='#') remove
+                        #orders.tab-pane.fade
+                            .row
+                                .col-12
+                                    .card.dashboard-table.mt-0
+                                        .card-body.table-responsive-sm
+                                            .top-sec
+                                                h3 My Orders
+                                            .table-responsive-xl
+                                                table.table.cart-table.order-table
+                                                    thead
+                                                        tr.table-head
+                                                            th(scope='col') image
+                                                            th(scope='col') Order Id
+                                                            th(scope='col') Product Details
+                                                            th(scope='col') Status
+                                                            th(scope='col') Price
+                                                            th(scope='col') View
+                                                    tbody
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/1.jpg' alt='')
+                                                            td
+                                                                span.mt-0 #125021
+                                                            td
+                                                                span.fs-6 Purple polo tshirt
+                                                            td
+                                                                span.badge.rounded-pill.bg-success.custom-badge Shipped
+                                                            td
+                                                                span.theme-color.fs-6 $49.54
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    i.fa.fa-eye.text-theme
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/2.jpg' alt='')
+                                                            td
+                                                                span.mt-0 #125367
+                                                            td
+                                                                span.fs-6 Sleevless white top
+                                                            td
+                                                                span.badge.rounded-pill.bg-danger.custom-badge Pending
+                                                            td
+                                                                span.theme-color.fs-6 $49.54
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    i.fa.fa-eye.text-theme
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/27.jpg' alt='')
+                                                            td
+                                                                p #125948
+                                                            td
+                                                                p.fs-6 multi color polo tshirt
+                                                            td
+                                                                span.badge.rounded-pill.bg-success.custom-badge Shipped
+                                                            td
+                                                                p.theme-color.fs-6 $49.54
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    i.fa.fa-eye.text-theme
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/28.jpg' alt='')
+                                                            td
+                                                                p #127569
+                                                            td
+                                                                p.fs-6 Candy red solid tshirt
+                                                            td
+                                                                span.badge.rounded-pill.bg-success.custom-badge Shipped
+                                                            td
+                                                                p.theme-color.fs-6 $49.54
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    i.fa.fa-eye.text-theme
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/33.jpg' alt='')
+                                                            td
+                                                                p #125753
+                                                            td
+                                                                p.fs-6 multicolored polo tshirt
+                                                            td
+                                                                span.badge.rounded-pill.bg-secondary.custom-badge Canceled
+                                                            td
+                                                                p.theme-color.fs-6 $49.54
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    i.fa.fa-eye.text-theme
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/34.jpg' alt='')
+                                                            td
+                                                                span #125021
+                                                            td
+                                                                span.fs-6 Men&apos;s Sweatshirt
+                                                            td
+                                                                span.badge.rounded-pill.bg-secondary.custom-badge Canceled
+                                                            td
+                                                                span.theme-color.fs-6 $49.54
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    i.fa.fa-eye.text-theme
+                        #wishlist.tab-pane.fade
+                            .row
+                                .col-12
+                                    .card.dashboard-table.mt-0
+                                        .card-body.table-responsive-sm
+                                            .top-sec
+                                                h3 My Wishlist
+                                            .table-responsive-xl
+                                                table.table.cart-table.wishlist-table
+                                                    thead
+                                                        tr.table-head
+                                                            th(scope='col') image
+                                                            th(scope='col') Order Id
+                                                            th(scope='col') Product Details
+                                                            th(scope='col') Price
+                                                            th(scope='col') Action
+                                                    tbody
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/1.jpg' alt='')
+                                                            td
+                                                                span.mt-0 #125021
+                                                            td
+                                                                span Purple polo tshirt
+                                                            td
+                                                                span.theme-color.fs-6 $49.54
+                                                            td
+                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
+                                                                    | Move to Cart
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/2.jpg' alt='')
+                                                            td
+                                                                span.mt-0 #125367
+                                                            td
+                                                                span Sleevless white top
+                                                            td
+                                                                span.theme-color.fs-6 $49.54
+                                                            td
+                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
+                                                                    | Move to Cart
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/27.jpg' alt='')
+                                                            td
+                                                                span #125948
+                                                            td
+                                                                span multi color polo tshirt
+                                                            td
+                                                                span.theme-color.fs-6 $49.54
+                                                            td
+                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
+                                                                    | Move to Cart
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/28.jpg' alt='')
+                                                            td
+                                                                span #127569
+                                                            td
+                                                                span Candy red solid tshirt
+                                                            td
+                                                                span.theme-color.fs-6 $49.54
+                                                            td
+                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
+                                                                    | Move to Cart
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/33.jpg' alt='')
+                                                            td
+                                                                span #125753
+                                                            td
+                                                                span multicolored polo tshirt
+                                                            td
+                                                                span.theme-color.fs-6 $49.54
+                                                            td
+                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
+                                                                    | Move to Cart
+                                                        tr
+                                                            td
+                                                                a(href='javascript:void(0)')
+                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/34.jpg' alt='')
+                                                            td
+                                                                span #125021
+                                                            td
+                                                                span Men&apos;s Sweatshirt
+                                                            td
+                                                                span.theme-color.fs-6 $49.54
+                                                            td
+                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
+                                                                    | Move to Cart
+                        #payment.tab-pane.fade
+                            .row
+                                .col-12
+                                    .card.mt-0
+                                        .card-body
+                                            .top-sec
+                                                h3 Saved Cards
+                                                a.btn.btn-sm.btn-solid(href='#') + add new
+                                            .address-book-section
+                                                .row.g-4
+                                                    .select-box.active.col-xl-4.col-md-6
+                                                        .address-box
+                                                            .bank-logo
+                                                                img.bank-logo(src='../assets/images/bank-logo.png')
+                                                                img.network-logo(src='/assets/images/visa.png')
+                                                            .card-number
+                                                                h6 Card Number
+                                                                h5 6262 6126 2112 1515
+                                                            .name-validity
+                                                                .left
+                                                                    h6 name on card
+                                                                    h5 Mark Jecno
+                                                                .right
+                                                                    h6 validity
+                                                                    h5 XX/XX
+                                                            .bottom
+                                                                a.bottom_btn(href='javascript:void(0)' data-bs-target='#edit-address' data-bs-toggle='modal') edit
+                                                                a.bottom_btn(href='#') remove
+                                                    .select-box.col-xl-4.col-md-6
+                                                        .address-box
+                                                            .bank-logo
+                                                                img.bank-logo(src='/assets/images/bank-logo1.png')
+                                                                img.network-logo(src='/assets/images/visa.png')
+                                                            .card-number
+                                                                h6 Card Number
+                                                                h5 6262 6126 2112 1515
+                                                            .name-validity
+                                                                .left
+                                                                    h6 name on card
+                                                                    h5 Mark Jecno
+                                                                .right
+                                                                    h6 validity
+                                                                    h5 XX/XX
+                                                            .bottom
+                                                                a.bottom_btn(href='javascript:void(0)' data-bs-target='#edit-address' data-bs-toggle='modal') edit
+                                                                a.bottom_btn(href='#') remove
+                        #profile.tab-pane.fade
+                            .row
+                                .col-12
+                                    .card.mt-0
+                                        .card-body
+                                            .dashboard-box
+                                                .dashboard-title
+                                                    h4 profile
+                                                    a.edit-link(href='#') edit
+                                                .dashboard-detail
+                                                    ul
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 company name
+                                                                .right
+                                                                    h6 Fashion Store
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 email address
+                                                                .right
+                                                                    h6 mark.jecno@gmail.com
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 Country / Region
+                                                                .right
+                                                                    h6 Downers Grove, IL
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 Year Established
+                                                                .right
+                                                                    h6 2018
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 Total Employees
+                                                                .right
+                                                                    h6 101 - 200 People
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 category
+                                                                .right
+                                                                    h6 clothing
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 street address
+                                                                .right
+                                                                    h6 549 Sulphur Springs Road
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 city/state
+                                                                .right
+                                                                    h6 Downers Grove, IL
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 zip
+                                                                .right
+                                                                    h6 60515
+                                                .dashboard-title.mt-lg-5.mt-3
+                                                    h4 login details
+                                                    a.edit-link(href='#') edit
+                                                .dashboard-detail
+                                                    ul
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 Email Address
+                                                                .right
+                                                                    h6
+                                                                        | mark.jecno@gmail.com
+                                                                        a.edit-link(href='#') edit
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 Phone No.
+                                                                .right
+                                                                    h6
+                                                                        | +01 4485 5454
+                                                                        a.edit-link(href='#') Edit
+                                                        li
+                                                            .details
+                                                                .left
+                                                                    h6 Password
+                                                                .right
+                                                                    h6
+                                                                        | *******
+                                                                        a.edit-link(href='#') Edit
+                        #security.tab-pane.fade
+                            .row
+                                .col-12
+                                    .card.mt-0
+                                        .card-body
+                                            .dashboard-box
+                                                .dashboard-title
+                                                    h4 settings
+                                                .dashboard-detail
+                                                    .account-setting
+                                                        h5 Notifications
+                                                        .row
+                                                            .col
+                                                                .form-check
+                                                                    input#exampleRadios1.radio_animated.form-check-input(type='radio' name='exampleRadios' value='option1' checked='')
+                                                                    label.form-check-label(for='exampleRadios1')
+                                                                        | Allow Desktop Notifications
+                                                                .form-check
+                                                                    input#exampleRadios2.radio_animated.form-check-input(type='radio' name='exampleRadios' value='option2')
+                                                                    label.form-check-label(for='exampleRadios2')
+                                                                        | Enable Notifications
+                                                                .form-check
+                                                                    input#exampleRadios3.radio_animated.form-check-input(type='radio' name='exampleRadios' value='option3')
+                                                                    label.form-check-label(for='exampleRadios3')
+                                                                        | Get notification for my own activity
+                                                                .form-check
+                                                                    input#exampleRadios4.radio_animated.form-check-input(type='radio' name='exampleRadios' value='option4')
+                                                                    label.form-check-label(for='exampleRadios4')
+                                                                        | DND
+                                                    .account-setting
+                                                        h5 deactivate account
+                                                        .row
+                                                            .col
+                                                                .form-check
+                                                                    input#exampleRadios5.radio_animated.form-check-input(type='radio' name='exampleRadios1' value='option4' checked='')
+                                                                    label.form-check-label(for='exampleRadios4')
+                                                                        | I have a privacy concern
+                                                                .form-check
+                                                                    input#exampleRadios6.radio_animated.form-check-input(type='radio' name='exampleRadios1' value='option5')
+                                                                    label.form-check-label(for='exampleRadios5')
+                                                                        | This is temporary
+                                                                .form-check
+                                                                    input#exampleRadios7.radio_animated.form-check-input(type='radio' name='exampleRadios1' value='option6')
+                                                                    label.form-check-label(for='exampleRadios6')
+                                                                        | other
+                                                                button.btn.btn-solid.btn-xs(type='button')
+                                                                    | Deactivate
+                                                                    | Account
+                                                    .account-setting
+                                                        h5 Delete account
+                                                        .row
+                                                            .col
+                                                                .form-check
+                                                                    input#exampleRadios8.radio_animated.form-check-input(type='radio' name='exampleRadios3' value='option7' checked='')
+                                                                    label.form-check-label(for='exampleRadios7')
+                                                                        | No longer usable
+                                                                .form-check
+                                                                    input#exampleRadios9.radio_animated.form-check-input(type='radio' name='exampleRadios3' value='option8')
+                                                                    label.form-check-label(for='exampleRadios8')
+                                                                        | Want to switch on other account
+                                                                .form-check
+                                                                    input#exampleRadios10.radio_animated.form-check-input(type='radio' name='exampleRadios3' value='option9')
+                                                                    label.form-check-label(for='exampleRadios9')
+                                                                        | other
+                                                                button.btn.btn-solid.btn-xs(type='button') Delete Account
+    // dashboard section end
+    // Modal start
+    #logout.modal.logout-modal.fade(tabindex='-1' role='dialog')
+        .modal-dialog.modal-dialog-centered(role='document')
+            .modal-content
+                .modal-header
+                    h5#exampleModalLabel.modal-title Logging Out
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                        span(aria-hidden='true') &times;
+                .modal-body
+                    | Do you want to log out?
+                .modal-footer
+                    a.btn.btn-dark.btn-custom(href='#' data-bs-dismiss='modal') no
+                    a.btn.btn-solid.btn-custom(href='#') yes
+    // modal end
+    // footer start
+    include footer
+    // footer end
+    // tap to top
+    .tap-top
+        div
+            i.fa.fa-angle-double-up
+    // tap to top End
+    // theme setting
+    include theme-settings
+    // theme setting
+    include vendor-scripts
+    script.
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }
