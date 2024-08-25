@@ -5,6 +5,10 @@ const PASSWORD = '*7WkKqhrpvEB%40kQ';
 const DATABASE = 'sample_mflix';
 const uri = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.yowhpdm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
+console.log(`
+    MongoDB URI: ${uri})
+`)
+
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
