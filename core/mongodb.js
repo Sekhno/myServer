@@ -94,6 +94,20 @@ const fetchAllDocuments = async (name) => {
     }
 };
 
+const fetchAllDocumentsByQuery = async (name, query) => {
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection(name);
+
+        return await collection.find(query).toArray();
+    } catch (err) {
+        console.error('Error fetching data:', err);
+    } finally {
+        await client.close();
+    }
+};
+
 const findByQuery = async (colName, query) => {
     try {
         await client.connect();
@@ -108,4 +122,4 @@ const findByQuery = async (colName, query) => {
     }
 }
 
-module.exports = {insertItem, deleteItem, updateItem, fetchAllDocuments, findByQuery};
+module.exports = {insertItem, deleteItem, updateItem, fetchAllDocuments, fetchAllDocumentsByQuery, findByQuery};

@@ -18,8 +18,8 @@ block content
                             .col
                                 .slider-contain
                                     div
-                                        h4 welcome to fashion
-                                        h1 men fashion
+                                        h4 welcome to demo fashion
+                                        h1 men demo fashion
                                         a.btn.btn-solid(href='#') shop now
             div
                 .home.text-center
@@ -29,8 +29,8 @@ block content
                             .col
                                 .slider-contain
                                     div
-                                        h4 welcome to fashion
-                                        h1 women fashion
+                                        h4 welcome to demo fashion
+                                        h1 women demo fashion
                                         a.btn.btn-solid(href='#') shop now
     // Home slider end
     // collection banner
@@ -78,10 +78,10 @@ block content
                             .product-box
                                 .img-wrapper
                                     .front
-                                        a(href='product-page(no-sidebar).html')
+                                        a(href='/product/' + product._id)
                                             img.img-fluid.blur-up.lazyload.bg-img(src=product.images.front alt='')
                                     .back
-                                        a(href='product-page(no-sidebar).html')
+                                        a(href='/product/' + product._id)
                                             img.img-fluid.blur-up.lazyload.bg-img(src=product.images.back alt='')
                                     .cart-info.cart-wrap
                                         button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')

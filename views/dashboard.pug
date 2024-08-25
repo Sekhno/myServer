@@ -136,7 +136,7 @@ block content
                                                         .address-box
                                                             .top
                                                                 h6
-                                                                    | mark jecno
+                                                                    | #{user.name}
                                                                     span home
                                                             .middle
                                                                 .address
@@ -154,7 +154,7 @@ block content
                                                         .address-box
                                                             .top
                                                                 h6
-                                                                    | mark jecno
+                                                                    | #{user.name}
                                                                     span office
                                                             .middle
                                                                 .address
@@ -439,13 +439,13 @@ block content
                                                                 .left
                                                                     h6 email address
                                                                 .right
-                                                                    h6 mark.jecno@gmail.com
+                                                                    h6 #{user.email}
                                                         li
                                                             .details
                                                                 .left
                                                                     h6 Country / Region
                                                                 .right
-                                                                    h6 Downers Grove, IL
+                                                                    h6 #{user.address.country}
                                                         li
                                                             .details
                                                                 .left
@@ -469,19 +469,19 @@ block content
                                                                 .left
                                                                     h6 street address
                                                                 .right
-                                                                    h6 549 Sulphur Springs Road
+                                                                    h6 #{user.address.address}
                                                         li
                                                             .details
                                                                 .left
                                                                     h6 city/state
                                                                 .right
-                                                                    h6 Downers Grove, IL
+                                                                    h6 #{user.address.city}
                                                         li
                                                             .details
                                                                 .left
                                                                     h6 zip
                                                                 .right
-                                                                    h6 60515
+                                                                    h6 #{user.address.zip}
                                                 .dashboard-title.mt-lg-5.mt-3
                                                     h4 login details
                                                     a.edit-link(href='#') edit
@@ -493,7 +493,7 @@ block content
                                                                     h6 Email Address
                                                                 .right
                                                                     h6
-                                                                        | mark.jecno@gmail.com
+                                                                        | #{user.email}
                                                                         a.edit-link(href='#') edit
                                                         li
                                                             .details
@@ -501,7 +501,7 @@ block content
                                                                     h6 Phone No.
                                                                 .right
                                                                     h6
-                                                                        | +01 4485 5454
+                                                                        | #{user.details.phone}
                                                                         a.edit-link(href='#') Edit
                                                         li
                                                             .details

@@ -1,11 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const {createItem, readItems, updateItem, deleteItem} = require('../core/crud');
 
+const {fetchAllDocumentsByQuery} = require('../core/mongodb');
 
-/* GET home page. */
 router.get('/', async (req, res, next) => {
-    res.render('product-page', { title: 'Internet Shop' });
+    const query = req.query.name ? {name: { $regex: req.query.name, $options: 'i' }} : {};
+
+    // $or: [
+    //     { name: { $regex: 'apple', $options: 'i' } },
+    //     { description: { $regex: 'apple', $options: 'i' } }
+    // ]
+
+    res.render('collection', {
+        title: 'Internet Shop - Collection',
+        products: await fetchAllDocumentsByQuery('products', query)
+    });
+});
+
+router.get('/:id', async (req, res, next) => {
+    res.render('product-page', { title: 'Internet Shop - Product Page' });
 });
 
 module.exports = router;
