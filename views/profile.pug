@@ -27,23 +27,26 @@ block content
             .row
                 .col-sm-12
                     h3 PERSONAL DETAIL
-                    form.theme-form
+                    form#details.theme-form
                         .form-row.row
                             .col-md-6
                                 label(for='name') First Name
                                 input#name.form-control(type='text' placeholder='Enter Your name' required='')
                             .col-md-6
-                                label(for='email') Last Name
-                                input#last-name.form-control(type='text' placeholder='Email' required='')
+                                label(for='lastName') Last Name
+                                input#lastName.form-control(type='text' placeholder='Last Name' required='')
                             .col-md-6
-                                label(for='review') Phone number
-                                input#review.form-control(type='text' placeholder='Enter your number' required='')
+                                label(for='phone') Phone number
+                                input#phone.form-control(type='text' placeholder='Enter your number' required='')
                             .col-md-6
                                 label(for='email') Email
                                 input#email.form-control(type='text' placeholder='Email' required='')
                             .col-md-12
-                                label(for='review') Write Your Message
-                                textarea#exampleFormControlTextarea1.form-control.mb-0(placeholder='Write Your Message' rows='6')
+                                label(for='message') Write Your Message
+                                textarea#message.form-control.mb-0(placeholder='Write Your Message' rows='6')
+                            .col-md-12
+                                label(for='avatar') Image for avatar
+                                input#avatar.form-control(type='file' placeholder='File')
     // Section ends
     // address section start
     section.contact-page.register-page.section-b-space
@@ -51,30 +54,30 @@ block content
             .row
                 .col-sm-12
                     h3 SHIPPING ADDRESS
-                    form.theme-form
+                    form#shippingAddress.theme-form(action='/api/v1/account/profile' method='post' name='shippingAddress')
                         .form-row.row
                             .col-md-6
-                                label(for='name') flat / plot
-                                input#home-ploat.form-control(type='text' placeholder='company name' required='')
+                                label(for='plot') flat / plot
+                                input#plot.form-control(type='text' placeholder='Home plot' required='')
                             .col-md-6
-                                label(for='name') Address *
-                                input#address-two.form-control(type='text' placeholder='Address' required='')
+                                label(for='address') Address *
+                                input#address.form-control(type='text' placeholder='Address' required='')
                             .col-md-6
-                                label(for='email') Zip Code *
-                                input#zip-code.form-control(type='text' placeholder='zip-code' required='')
+                                label(for='zip') Zip Code *
+                                input#zip.form-control(type='text' placeholder='zip-code' required='')
                             .col-md-6.select_input
-                                label(for='review') Country *
-                                select.form-control(size='1')
+                                label(for='country') Country *
+                                select#country.form-control(size='1')
                                     option(value='India') India
                                     option(value='UAE') UAE
                                     option(value='U.K') U.K
                                     option(value='US') US
                             .col-md-6
-                                label(for='review') City *
+                                label(for='city') City *
                                 input#city.form-control(type='text' placeholder='City' required='')
                             .col-md-6
-                                label(for='review') Region/State *
-                                input#region-state.form-control(type='text' placeholder='Region/state' required='')
+                                label(for='region') Region/State *
+                                input#region.form-control(type='text' placeholder='Region/state' required='')
                             .col-md-12
                                 button.btn.btn-sm.btn-solid(type='submit') Save setting
     // Section ends
@@ -97,3 +100,93 @@ block content
         function closeSearch() {
             document.getElementById("search-overlay").style.display = "none";
         }
+        function getCompressedImage(imageFile) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.src = imageFile;
+
+                img.onload = function () {
+                    // Створюємо canvas для стиснення зображення
+                    let canvas = document.createElement('canvas');
+                    let ctx = canvas.getContext('2d');
+
+                    // Встановлюємо розмір canvas
+                    let maxWidth = 800; // Задайте максимальну ширину
+                    let maxHeight = 800; // Задайте максимальну висоту
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > height) {
+                        if (width > maxWidth) {
+                            height = Math.round(height * (maxWidth / width));
+                            width = maxWidth;
+                        }
+                    } else {
+                        if (height > maxHeight) {
+                            width = Math.round(width * (maxHeight / height));
+                            height = maxHeight;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    // Малюємо стиснуте зображення на canvas
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    // Отримуємо стиснуте зображення у форматі Base64
+                    let compressedDataUrl = canvas.toDataURL('image/jpeg', 0.3); // Стиснення до 30%
+
+
+                    resolve(compressedDataUrl);
+                }
+            })
+        }
+        function getDetails(){
+            const details = document.getElementById('details');
+
+            return {
+                name: details.querySelector('#name').value,
+                lastName: details.querySelector('#lastName').value,
+                phone: details.querySelector('#phone').value,
+                email: details.querySelector('#email').value,
+                message: details.querySelector('#message').value,
+                avatar: details.querySelector('#avatar').files[0],
+            }
+        }
+        document
+            .getElementById('shippingAddress')
+            .addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const formData = {
+                    details: getDetails(),
+                    address: {
+                        plot: this.querySelector('#plot').value,
+                        address: this.querySelector('#address').value,
+                        zip: this.querySelector('#zip').value,
+                        country: this.querySelector('#country').value,
+                        city: this.querySelector('#city').value,
+                        region: this.querySelector('#region').value,
+                    }
+                };
+
+                const reader = new FileReader();
+
+                reader.onloadend = async () => {
+                    formData.details.avatar = await getCompressedImage(reader.result);
+
+                    fetch(this.action, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                        // .then(response => response.json())
+                        .then(data => console.log(data))
+                        .catch(error => console.error('Error:', error));
+                };
+
+                reader.readAsDataURL(formData.details.avatar);
+            });
