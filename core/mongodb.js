@@ -5,9 +5,6 @@ const PASSWORD = '*7WkKqhrpvEB%40kQ';
 const DATABASE = 'sample_mflix';
 const uri = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.yowhpdm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
-console.log(`
-    MongoDB URI: ${uri})
-`)
 
 const client = new MongoClient(uri, {
     serverApi: {
@@ -19,10 +16,15 @@ const client = new MongoClient(uri, {
 
 async function run() {
     try {
+        console.log('Connecting to MongoDB...');
         await client.connect();
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    } finally {
+    }
+    catch(err) {
+        console.log(err);
+    }
+    finally {
         await client.close();
     }
 }
