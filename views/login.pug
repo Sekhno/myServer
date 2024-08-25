@@ -1,0 +1,95 @@
+extends layout
+
+block content
+    // loader start
+    include loader
+    // loader end
+    // header start
+    include header
+    // header end
+    // breadcrumb start
+    .breadcrumb-section
+        .container
+            .row
+                .col-sm-6
+                    .page-title
+                        h2 customer&apos;s login
+                .col-sm-6
+                    nav.theme-breadcrumb(aria-label='breadcrumb')
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='index.html') Home
+                            li.breadcrumb-item.active login
+    // breadcrumb End
+    // section start
+    section.login-page.section-b-space
+        .container
+            .row
+                .col-lg-6
+                    h3 Login
+                    .theme-card
+                        form.theme-form
+                            .form-group
+                                label(for='email') Email
+                                input#email.form-control(type='text' placeholder='Email' required='')
+                                #validationEmailFeedback.invalid-feedback Invalid email
+                            .form-group
+                                label(for='review') Password
+                                input#review.form-control(type='password' placeholder='Enter your password' required='')
+                                #validationPasswordFeedback.invalid-feedback Invalid password
+                            a.btn.btn-solid.login(href='#') Login
+                .col-lg-6.right-login
+                    h3 New Customer
+                    .theme-card.authentication-right
+                        h6.title-font Create A Account
+                        p
+                            | Sign up for a free account at our store. Registration is quick and easy. It allows you to be
+                            | able to order from our shop. To start shopping click register.
+                        a.btn.btn-solid(href='/register/signup') Create an Account
+    // Section ends
+    // footer start
+    include footer
+    // footer end
+    // theme setting
+    include theme-settings
+    // theme setting
+    // tap to top start
+    .tap-top
+        div
+            i.fa.fa-angle-double-up
+    // tap to top end
+    include vendor-scripts
+    script.
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }
+        const jQuery = $;
+        jQuery('.login').on('click', function(e) {
+            e.preventDefault();
+            const email = jQuery('#email');
+            const password = jQuery('#review');
+
+            email.removeClass('is-invalid');
+            password.removeClass('is-invalid');
+            jQuery.ajax({
+                method: "POST",
+                url: "/api/v1/register/login",
+                data: {email: email[0].value, password: password[0].value},
+            }).done(function (msg) {
+                location.href = '/';
+            }).fail(function () {
+                const [xhr] = arguments;
+
+                if (xhr.responseText === 'Invalid email') {
+                    email.addClass('is-invalid');
+                    email.focus();
+                }
+                else if (xhr.responseText === 'Invalid password') {
+                    password.addClass('is-invalid');
+                    password.focus();
+                }
+            });
+        })

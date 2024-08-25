@@ -1,0 +1,34 @@
+.top-header
+    .container
+        .row
+            .col-lg-6
+                .header-contact
+                    ul
+                        li Welcome to Our store
+                        li
+                            i.fa.fa-phone(aria-hidden='true')
+                            | Call Us: 123 - 456 - 7890
+            .col-lg-6.text-end
+                ul.header-dropdown
+                    li.mobile-wishlist
+                        a(href='#')
+                            i.fa.fa-heart(aria-hidden='true')
+                    li.onhover-dropdown.mobile-account
+                        i.fa.fa-user(aria-hidden='true')
+                        |  My Account
+                        ul.onhover-show-div
+                            if user
+                                li
+                                    a(href='/account/profile') profile
+                                li
+                                    a.logout(href='#') Logout
+                            else
+                                li
+                                    a(href='register') Login
+                                li
+                                    a(href='/register/signup') Register
+
+
+
+
+

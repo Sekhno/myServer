@@ -1,0 +1,93 @@
+extends layout
+
+block content
+    // loader start
+    include loader
+    // loader end
+    // header start
+    include header
+    // header end
+    // breadcrumb start
+    .breadcrumb-section
+        .container
+            .row
+                .col-sm-6
+                    .page-title
+                        h2 create account
+                .col-sm-6
+                    nav.theme-breadcrumb(aria-label='breadcrumb')
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='index.html') Home
+                            li.breadcrumb-item.active(aria-current='page') create account
+    // breadcrumb End
+    // section start
+    section.register-page.section-b-space
+        .container
+            .row
+                .col-lg-12
+                    h3 create account
+                    .theme-card
+                        form.theme-form
+                            .form-row.row
+                                .col-md-6
+                                    label(for='fName') First Name
+                                    input#fName.form-control(type='text' placeholder='First Name' required='')
+                                .col-md-6
+                                    label(for='lName') Last Name
+                                    input#lName.form-control(type='text' placeholder='Last Name' required='')
+                            .form-row.row
+                                .col-md-6
+                                    label(for='email') email
+                                    input#email.form-control(type='text' placeholder='Email' required='')
+                                .col-md-6
+                                    label(for='review') Password
+                                    input#review.form-control(type='password' placeholder='Enter your password' required='')
+                                a.btn.btn-solid.w-auto.createAccount(href='#') create Account
+    // Section ends
+    // footer start
+    include footer
+    // footer end
+    // theme setting
+    include theme-settings
+    // theme setting
+    // tap to top start
+    .tap-top
+        div
+            i.fa.fa-angle-double-up
+    // tap to top end
+    include vendor-scripts
+    script.
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }
+        const jQuery = $;
+        jQuery('.createAccount').on('click', function (e) {
+            e.preventDefault();
+            const fName = jQuery('#fName');
+            const lName = jQuery('#lName');
+            const email = jQuery('#email');
+            const password = jQuery('#review');
+
+            jQuery.ajax({
+                method: "POST",
+                url: "/api/v1/register/signup",
+                data: {
+                    name: fName[0].value + " " + lName[0].value,
+                    email: email[0].value,
+                    password: password[0].value
+                },
+            }).done(function (msg) {
+                console.log("Data Saved: " + msg);
+            }).fail(function () {
+                const [xhr] = arguments;
+                console.log(xhr.responseText)
+                // if (xhr.responseText === 'Invalid email') {
+                //     email.addClass('is-invalid');
+                //     email.focus();
+                // }
+            });
+        })

@@ -1,0 +1,99 @@
+extends layout
+
+block content
+    // loader start
+    include loader
+    // loader end
+    // header start
+    include header
+    // header end
+    // breadcrumb start
+    .breadcrumb-section
+        .container
+            .row
+                .col-sm-6
+                    .page-title
+                        h2 profile
+                .col-sm-6
+                    nav.theme-breadcrumb(aria-label='breadcrumb')
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='index.html') Home
+                            li.breadcrumb-item.active(aria-current='page') profile
+    // breadcrumb End
+    // personal deatail section start
+    section.contact-page.register-page
+        .container
+            .row
+                .col-sm-12
+                    h3 PERSONAL DETAIL
+                    form.theme-form
+                        .form-row.row
+                            .col-md-6
+                                label(for='name') First Name
+                                input#name.form-control(type='text' placeholder='Enter Your name' required='')
+                            .col-md-6
+                                label(for='email') Last Name
+                                input#last-name.form-control(type='text' placeholder='Email' required='')
+                            .col-md-6
+                                label(for='review') Phone number
+                                input#review.form-control(type='text' placeholder='Enter your number' required='')
+                            .col-md-6
+                                label(for='email') Email
+                                input#email.form-control(type='text' placeholder='Email' required='')
+                            .col-md-12
+                                label(for='review') Write Your Message
+                                textarea#exampleFormControlTextarea1.form-control.mb-0(placeholder='Write Your Message' rows='6')
+    // Section ends
+    // address section start
+    section.contact-page.register-page.section-b-space
+        .container
+            .row
+                .col-sm-12
+                    h3 SHIPPING ADDRESS
+                    form.theme-form
+                        .form-row.row
+                            .col-md-6
+                                label(for='name') flat / plot
+                                input#home-ploat.form-control(type='text' placeholder='company name' required='')
+                            .col-md-6
+                                label(for='name') Address *
+                                input#address-two.form-control(type='text' placeholder='Address' required='')
+                            .col-md-6
+                                label(for='email') Zip Code *
+                                input#zip-code.form-control(type='text' placeholder='zip-code' required='')
+                            .col-md-6.select_input
+                                label(for='review') Country *
+                                select.form-control(size='1')
+                                    option(value='India') India
+                                    option(value='UAE') UAE
+                                    option(value='U.K') U.K
+                                    option(value='US') US
+                            .col-md-6
+                                label(for='review') City *
+                                input#city.form-control(type='text' placeholder='City' required='')
+                            .col-md-6
+                                label(for='review') Region/State *
+                                input#region-state.form-control(type='text' placeholder='Region/state' required='')
+                            .col-md-12
+                                button.btn.btn-sm.btn-solid(type='submit') Save setting
+    // Section ends
+    // footer start
+    include footer
+    // footer end
+    // theme setting
+    include theme-settings
+    // theme setting
+    // tap to top
+    .tap-top
+        div
+            i.fa.fa-angle-double-up
+    // tap to top End
+    include vendor-scripts
+    script.
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }
