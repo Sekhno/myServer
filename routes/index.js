@@ -1,10 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const {fetchAllDocuments, findByQuery} = require('../core/mongodb');
+const {fetchAllDocuments, findByQuery, fetchProductsByIds, fetchTopRatedProducts} = require('../core/mongodb');
 const jwt = require("jsonwebtoken");
 const secretKey = require("../services/secret.service");
 
-router.use(async (req, res, next) => {
+router.use(async (
+    req,
+    res,
+    next
+) =>
+{
   const token = req.cookies.token;
 
   if (token) {
@@ -17,7 +22,6 @@ router.use(async (req, res, next) => {
       next()
     } catch (error) {
       console.error('Помилка при розшифруванні токена:', error.message);
-      // next(error)
       next()
     }
   }
@@ -27,12 +31,28 @@ router.use(async (req, res, next) => {
   }
 });
 
-router.get('/', async (req, res, next) => {
-  console.log('user', req.user);
+router.get('/', async (
+    req,
+    res,
+    next
+) =>
+{
+  let drops = null;
+
+  if (req.user) {
+    const {lastDrops} = req.user.session;
+
+    drops = await fetchProductsByIds('products', lastDrops);
+  }
+  else {
+    drops = await fetchTopRatedProducts('products', -1, 5)
+  }
+
   res.render('index', {
     title: 'Internet Shop',
-    products: await fetchAllDocuments('top'),
-    user: req.user
+    products: await fetchAllDocuments('products'),
+    user: req.user,
+    drops
   });
 });
 

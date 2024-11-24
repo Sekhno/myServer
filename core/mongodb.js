@@ -108,6 +108,22 @@ const fetchAllDocumentsByQuery = async (name, query) => {
     }
 };
 
+const fetchProductsByIds = async function (name, productIds) {
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection(name);
+        const objectIds = productIds.map(id => new ObjectId(id));
+        const products = await collection.find({ _id: { $in: objectIds } }).toArray();
+
+        console.log(products);
+
+        return products;
+    } finally {
+        await client.close();
+    }
+}
+
 const findByQuery = async (colName, query) => {
     try {
         await client.connect();
@@ -122,4 +138,29 @@ const findByQuery = async (colName, query) => {
     }
 }
 
-module.exports = {insertItem, deleteItem, updateItem, fetchAllDocuments, fetchAllDocumentsByQuery, findByQuery};
+const fetchTopRatedProducts = async function (colName, sort, limit) {
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection(colName);
+        return await collection
+            .find()
+            .sort({ rating: sort })
+            .limit(limit)
+            .toArray();
+
+    } finally {
+        await client.close();
+    }
+}
+
+module.exports = {
+    insertItem,
+    deleteItem,
+    updateItem,
+    fetchAllDocuments,
+    fetchAllDocumentsByQuery,
+    fetchProductsByIds,
+    findByQuery,
+    fetchTopRatedProducts
+};
