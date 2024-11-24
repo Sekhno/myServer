@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const {fetchAllDocuments, findByQuery, fetchProductsByIds, fetchTopRatedProducts} = require('../core/mongodb');
+const {
+  fetchAllDocuments,
+  findByQuery,
+  fetchProductsByIds,
+  fetchTopRatedProducts,
+  fetchProductsByTag
+} = require('../core/mongodb');
 const jwt = require("jsonwebtoken");
 const secretKey = require("../services/secret.service");
 
@@ -50,7 +56,8 @@ router.get('/', async (
 
   res.render('index', {
     title: 'Internet Shop',
-    products: await fetchAllDocuments('products'),
+    // products: await fetchAllDocuments('products'),
+    weddings: await fetchProductsByTag('products', -1, 8, 100),
     user: req.user,
     drops
   });

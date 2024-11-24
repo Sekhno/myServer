@@ -77,6 +77,10 @@ block content
                         each product in drops
                             .product-box
                                 .img-wrapper
+                                    if product.newProductOnSale
+                                        .lable-block
+                                            span.lable3 new
+                                            span.lable4 on sale
                                     .front
                                         a(href='/product/' + product._id)
                                             img.img-fluid.blur-up.lazyload.bg-img(src=product.images[0] + '?im=Resize,width=280' alt='Front view of ' + product.name loading='lazy')
@@ -132,7 +136,7 @@ block content
                     .theme-tab
                         ul.tabs.tab-title
                             li.current
-                                a(href='tab-4') work casual
+                                a(href='tab-4') weddings casual
                             li
                                 a(href='tab-5') WFH Wear
                             li
@@ -140,266 +144,44 @@ block content
                         .tab-content-cls
                             #tab-4.tab-content.active.default
                                 .no-slider.row
-                                    .product-box
-                                        .img-wrapper
-                                            .front
+                                    each product in weddings
+                                        .product-box
+                                            .img-wrapper
+                                                if product.newProductOnSale
+                                                    .lable-block
+                                                        span.lable3 new
+                                                        span.lable4 on sale
+                                                .front
+                                                    a(href='product-page(no-sidebar).html')
+                                                        img.img-fluid.blur-up.lazyload.bg-img(src=product.images[0] + '?im=Resize,width=280' alt='Front view of ' + product.name loading='lazy')
+                                                .back
+                                                    a(href='product-page(no-sidebar).html')
+                                                        img.img-fluid.blur-up.lazyload.bg-img(src=product.images[1] + '?im=Resize,width=280' alt='Back view of ' + product.name loading='lazy')
+                                                .cart-info.cart-wrap
+                                                    button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                        i.ti-shopping-cart
+                                                    a(href='javascript:void(0)' title='Add to Wishlist')
+                                                        i.ti-heart(aria-hidden='true')
+                                                    a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                        i.ti-search(aria-hidden='true')
+                                                    a(href='compare.html' title='Compare')
+                                                        i.ti-reload(aria-hidden='true')
+                                            .product-detail
+                                                .rating
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
+                                                    i.fa.fa-star
                                                 a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/27.jpg' alt='')
-                                            .back
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/28.jpg' alt='')
-                                            .cart-info.cart-wrap
-                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
-                                                    i.ti-shopping-cart
-                                                a(href='javascript:void(0)' title='Add to Wishlist')
-                                                    i.ti-heart(aria-hidden='true')
-                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
-                                                    i.ti-search(aria-hidden='true')
-                                                a(href='compare.html' title='Compare')
-                                                    i.ti-reload(aria-hidden='true')
-                                        .product-detail
-                                            .rating
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                            a(href='product-page(no-sidebar).html')
-                                                h6 purple solid polo tshirt
-                                            h4 $50.00
-                                            ul.color-variant
-                                                li.bg-light0
-                                                li.bg-light1
-                                                li.bg-light2
-                                    .product-box
-                                        .img-wrapper
-                                            .lable-block
-                                                span.lable3 new
-                                                span.lable4 on sale
-                                            .front
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/1.jpg' alt='')
-                                            .back
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/2.jpg' alt='')
-                                            .cart-info.cart-wrap
-                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
-                                                    i.ti-shopping-cart
-                                                a(href='javascript:void(0)' title='Add to Wishlist')
-                                                    i.ti-heart(aria-hidden='true')
-                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
-                                                    i.ti-search(aria-hidden='true')
-                                                a(href='compare.html' title='Compare')
-                                                    i.ti-reload(aria-hidden='true')
-                                        .product-detail
-                                            .rating
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                            a(href='product-page(no-sidebar).html')
-                                                h6 sleevles white tshirt with text
-                                            h4 $65.00
-                                            ul.color-variant
-                                                li.bg-light0
-                                                li.bg-light1
-                                                li.bg-light2
-                                    .product-box
-                                        .img-wrapper
-                                            .front
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/33.jpg' alt='')
-                                            .back
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/34.jpg' alt='')
-                                            .cart-info.cart-wrap
-                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
-                                                    i.ti-shopping-cart
-                                                a(href='javascript:void(0)' title='Add to Wishlist')
-                                                    i.ti-heart(aria-hidden='true')
-                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
-                                                    i.ti-search(aria-hidden='true')
-                                                a(href='compare.html' title='Compare')
-                                                    i.ti-reload(aria-hidden='true')
-                                        .product-detail
-                                            .rating
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                            a(href='product-page(no-sidebar).html')
-                                                h6 multi-color polo tshirt
-                                            h4 $45.00
-                                            ul.color-variant
-                                                li.bg-light0
-                                                li.bg-light1
-                                                li.bg-light2
-                                    .product-box
-                                        .img-wrapper
-                                            .lable-block
-                                                span.lable3 new
-                                                span.lable4 on sale
-                                            .front
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/35.jpg' alt='')
-                                            .back
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/36.jpg' alt='')
-                                            .cart-info.cart-wrap
-                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
-                                                    i.ti-shopping-cart
-                                                a(href='javascript:void(0)' title='Add to Wishlist')
-                                                    i.ti-heart(aria-hidden='true')
-                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
-                                                    i.ti-search(aria-hidden='true')
-                                                a(href='compare.html' title='Compare')
-                                                    i.ti-reload(aria-hidden='true')
-                                        .product-detail
-                                            .rating
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                            a(href='product-page(no-sidebar).html')
-                                                h6 Candy red solid tshirt
-                                            h4 $30.00
-                                            ul.color-variant
-                                                li.bg-light0
-                                                li.bg-light1
-                                                li.bg-light2
-                                    .product-box
-                                        .img-wrapper
-                                            .lable-block
-                                                span.lable3 new
-                                                span.lable4 on sale
-                                            .front
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/33.jpg' alt='')
-                                            .back
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/34.jpg' alt='')
-                                            .cart-info.cart-wrap
-                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
-                                                    i.ti-shopping-cart
-                                                a(href='javascript:void(0)' title='Add to Wishlist')
-                                                    i.ti-heart(aria-hidden='true')
-                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
-                                                    i.ti-search(aria-hidden='true')
-                                                a(href='compare.html' title='Compare')
-                                                    i.ti-reload(aria-hidden='true')
-                                        .product-detail
-                                            .rating
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                            a(href='product-page(no-sidebar).html')
-                                                h6 multi-color polo tshirt
-                                            h4 $65.00
-                                            ul.color-variant
-                                                li.bg-light0
-                                                li.bg-light1
-                                                li.bg-light2
-                                    .product-box
-                                        .img-wrapper
-                                            .front
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/35.jpg' alt='')
-                                            .back
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/36.jpg' alt='')
-                                            .cart-info.cart-wrap
-                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
-                                                    i.ti-shopping-cart
-                                                a(href='javascript:void(0)' title='Add to Wishlist')
-                                                    i.ti-heart(aria-hidden='true')
-                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
-                                                    i.ti-search(aria-hidden='true')
-                                                a(href='compare.html' title='Compare')
-                                                    i.ti-reload(aria-hidden='true')
-                                        .product-detail
-                                            .rating
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                            a(href='product-page(no-sidebar).html')
-                                                h6 Candy red solid tshirt
-                                            h4 $500.00
-                                            ul.color-variant
-                                                li.bg-light0
-                                                li.bg-light1
-                                                li.bg-light2
-                                    .product-box
-                                        .img-wrapper
-                                            .lable-block
-                                                span.lable3 new
-                                                span.lable4 on sale
-                                            .front
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/1.jpg' alt='')
-                                            .back
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/2.jpg' alt='')
-                                            .cart-info.cart-wrap
-                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
-                                                    i.ti-shopping-cart
-                                                a(href='javascript:void(0)' title='Add to Wishlist')
-                                                    i.ti-heart(aria-hidden='true')
-                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
-                                                    i.ti-search(aria-hidden='true')
-                                                a(href='compare.html' title='Compare')
-                                                    i.ti-reload(aria-hidden='true')
-                                        .product-detail
-                                            .rating
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                            a(href='product-page(no-sidebar).html')
-                                                h6 sleevles white tshirt with text
-                                            h4 $50.00
-                                            ul.color-variant
-                                                li.bg-light0
-                                                li.bg-light1
-                                                li.bg-light2
-                                    .product-box
-                                        .img-wrapper
-                                            .front
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/27.jpg' alt='')
-                                            .back
-                                                a(href='product-page(no-sidebar).html')
-                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/28.jpg' alt='')
-                                            .cart-info.cart-wrap
-                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
-                                                    i.ti-shopping-cart
-                                                a(href='javascript:void(0)' title='Add to Wishlist')
-                                                    i.ti-heart(aria-hidden='true')
-                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
-                                                    i.ti-search(aria-hidden='true')
-                                                a(href='compare.html' title='Compare')
-                                                    i.ti-reload(aria-hidden='true')
-                                        .product-detail
-                                            .rating
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                                i.fa.fa-star
-                                            a(href='product-page(no-sidebar).html')
-                                                h6 purple solid polo tshirt
-                                            h4 $25.00
-                                            ul.color-variant
-                                                li.bg-light0
-                                                li.bg-light1
-                                                li.bg-light2
+                                                    h6 #{product.name}
+                                                h4 #{product.price}
+                                                    if product.delPrice
+                                                        del=product.delPrice
+                                                if product.colorVariant
+                                                    ul.color-variant
+                                                        each val in product.colorVariant
+                                                            li(class='bg-light' + val)
                             #tab-5.tab-content
                                 .no-slider.row
                                     .product-box
@@ -1281,13 +1063,14 @@ block content
         //         $('#exampleModal').modal('show');
         //     }, 2500);
         // });
+        const jQuery = $;
         function openSearch() {
             document.getElementById("search-overlay").style.display = "block";
         }
         function closeSearch() {
             document.getElementById("search-overlay").style.display = "none";
         }
-        $('.logout').on('click', function (e) {
+        jQuery('.logout').on('click', function (e) {
             e.preventDefault();
             fetch('/account/logout', {
                 method: 'POST',
