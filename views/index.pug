@@ -12,7 +12,7 @@ block content
         .slide-1.home-slider
             div
                 .home.text-center
-                    img.bg-img.blur-up.lazyload(src='/assets/images/home-banner/1.jpg' alt='')
+                    img.bg-img.blur-up.lazyload(src='/assets/images/home-banner/1.jpg' alt='' loading='lazy')
                     .container
                         .row
                             .col
@@ -23,7 +23,7 @@ block content
                                         a.btn.btn-solid(href='#') shop now
             div
                 .home.text-center
-                    img.bg-img.blur-up.lazyload(src='/assets/images/home-banner/2.jpg' alt='')
+                    img.bg-img.blur-up.lazyload(src='/assets/images/home-banner/2.jpg' alt='' loading='lazy')
                     .container
                         .row
                             .col
@@ -41,7 +41,7 @@ block content
                     a(href='#')
                         .collection-banner.p-right.text-center
                             .img-part
-                                img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/sub-banner1.jpg' alt='')
+                                img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/sub-banner1.jpg' alt='' loading='lazy')
                             .contain-banner
                                 div
                                     h4 save 30%
@@ -50,7 +50,7 @@ block content
                     a(href='#')
                         .collection-banner.p-right.text-center
                             .img-part
-                                img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/sub-banner2.jpg' alt='')
+                                img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/sub-banner2.jpg' alt='' loading='lazy')
                             .contain-banner
                                 div
                                     h4 save 60%
@@ -74,15 +74,15 @@ block content
             .row
                 .col
                     .product-4.product-m.no-arrow
-                        each product in products
+                        each product in drops
                             .product-box
                                 .img-wrapper
                                     .front
                                         a(href='/product/' + product._id)
-                                            img.img-fluid.blur-up.lazyload.bg-img(src=product.images.front alt='')
+                                            img.img-fluid.blur-up.lazyload.bg-img(src=product.images[0] + '?im=Resize,width=280' alt='Front view of ' + product.name loading='lazy')
                                     .back
                                         a(href='/product/' + product._id)
-                                            img.img-fluid.blur-up.lazyload.bg-img(src=product.images.back alt='')
+                                            img.img-fluid.blur-up.lazyload.bg-img(src=product.images[1] + '?im=Resize,width=280' alt='Back view of ' + product.name loading='lazy')
                                     .cart-info.cart-wrap
                                         button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
                                             i.ti-shopping-cart
@@ -104,21 +104,20 @@ block content
                                     h4 #{product.price}
                                         if product.delPrice
                                             del=product.delPrice
-                                    ul.color-variant
-                                        li.bg-light0
-                                        li.bg-light1
-                                        li.bg-light2
-
+                                    if product.colorVariant
+                                        ul.color-variant
+                                            each val in product.colorVariant
+                                                li(class='bg-light' + val)
     // Product slider end
     // Parallax banner
     section.p-0
         .full-banner.parallax.text-center.p-left
-            img.bg-img.blur-up.lazyload(src='/assets/images/parallax/1.jpg' alt='')
+            img.bg-img.blur-up.lazyload(src='/assets/images/parallax/1.jpg' alt='' loading='lazy')
             .container
                 .row
                     .col
                         .banner-contain
-                            h2 2021
+                            h2 2024
                             h3 fashion trends
                             h4 special offer
     // Parallax banner end
@@ -979,7 +978,7 @@ block content
                             a(href='#')
                                 .classic-effect
                                     div
-                                        img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/blog/1.jpg' alt='')
+                                        img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/blog/1.png' alt='' loading='lazy')
                                     span
                             .blog-details
                                 h4 25 January 2021
@@ -991,7 +990,7 @@ block content
                             a(href='#')
                                 .classic-effect
                                     div
-                                        img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/blog/2.jpg' alt='')
+                                        img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/blog/2.png' alt='' loading='lazy')
                                     span
                             .blog-details
                                 h4 25 January 2018
@@ -1003,7 +1002,7 @@ block content
                             a(href='#')
                                 .classic-effect
                                     div
-                                        img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/blog/3.jpg' alt='')
+                                        img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/blog/3.png' alt='' loading='lazy')
                                     span
                             .blog-details
                                 h4 25 January 2018
@@ -1015,7 +1014,7 @@ block content
                             a(href='#')
                                 .classic-effect
                                     div
-                                        img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/blog/4.jpg' alt='')
+                                        img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/blog/1.png' alt='' loading='lazy')
                                     span
                             .blog-details
                                 h4 25 January 2018
@@ -1027,7 +1026,7 @@ block content
                             a(href='#')
                                 .classic-effect
                                     div
-                                        img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/blog/5.jpg' alt='')
+                                        img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/blog/2.png' alt='' loading='lazy')
                                     span
                             .blog-details
                                 h4 25 January 2018
@@ -1046,55 +1045,55 @@ block content
                         div
                             a(href='#')
                                 .instagram-box
-                                    img.bg-img(src='/assets/images/slider/2.jpg' alt='img')
+                                    img.bg-img(src='/assets/images/slider/1.png' alt='img' loading='lazy')
                                     .overlay
                                         i.fa.fa-instagram
                         div
                             a(href='#')
                                 .instagram-box
-                                    img.bg-img(src='/assets/images/slider/3.jpg' alt='img')
+                                    img.bg-img(src='/assets/images/slider/2.png' alt='img' loading='lazy')
                                     .overlay
                                         i.fa.fa-instagram
                         div
                             a(href='#')
                                 .instagram-box
-                                    img.bg-img(src='/assets/images/slider/4.jpg' alt='img')
+                                    img.bg-img(src='/assets/images/slider/3.png' alt='img' loading='lazy')
                                     .overlay
                                         i.fa.fa-instagram
                         div
                             a(href='#')
                                 .instagram-box
-                                    img.bg-img(src='/assets/images/slider/9.jpg' alt='img')
+                                    img.bg-img(src='/assets/images/slider/4.png' alt='img' loading='lazy')
                                     .overlay
                                         i.fa.fa-instagram
                         div
                             a(href='#')
                                 .instagram-box
-                                    img.bg-img(src='/assets/images/slider/6.jpg' alt='img')
+                                    img.bg-img(src='/assets/images/slider/5.png' alt='img' loading='lazy')
                                     .overlay
                                         i.fa.fa-instagram
                         div
                             a(href='#')
                                 .instagram-box
-                                    img.bg-img(src='/assets/images/slider/7.jpg' alt='img')
+                                    img.bg-img(src='/assets/images/slider/6.png' alt='img' loading='lazy')
                                     .overlay
                                         i.fa.fa-instagram
                         div
                             a(href='#')
                                 .instagram-box
-                                    img.bg-img(src='/assets/images/slider/8.jpg' alt='img')
+                                    img.bg-img(src='/assets/images/slider/7.png' alt='img' loading='lazy')
                                     .overlay
                                         i.fa.fa-instagram
                         div
                             a(href='#')
                                 .instagram-box
-                                    img.bg-img(src='/assets/images/slider/9.jpg' alt='img')
+                                    img.bg-img(src='/assets/images/slider/1.png' alt='img' loading='lazy')
                                     .overlay
                                         i.fa.fa-instagram
                         div
                             a(href='#')
                                 .instagram-box
-                                    img.bg-img(src='/assets/images/slider/2.jpg' alt='img')
+                                    img.bg-img(src='/assets/images/slider/2.png' alt='img' loading='lazy')
                                     .overlay
                                         i.fa.fa-instagram
     // instagram section end
@@ -1107,35 +1106,35 @@ block content
                         div
                             .logo-block
                                 a(href='#')
-                                    img(src='/assets/images/logos/1.svg' alt='')
+                                    img(src='/assets/images/logos/1.svg' alt='' loading='lazy')
                         div
                             .logo-block
                                 a(href='#')
-                                    img(src='/assets/images/logos/2.svg' alt='')
+                                    img(src='/assets/images/logos/2.svg' alt='' loading='lazy')
                         div
                             .logo-block
                                 a(href='#')
-                                    img(src='/assets/images/logos/3.svg' alt='')
+                                    img(src='/assets/images/logos/3.svg' alt='' loading='lazy')
                         div
                             .logo-block
                                 a(href='#')
-                                    img(src='/assets/images/logos/4.svg' alt='')
+                                    img(src='/assets/images/logos/4.svg' alt='' loading='lazy')
                         div
                             .logo-block
                                 a(href='#')
-                                    img(src='/assets/images/logos/5.svg' alt='')
+                                    img(src='/assets/images/logos/5.svg' alt='' loading='lazy')
                         div
                             .logo-block
                                 a(href='#')
-                                    img(src='/assets/images/logos/6.svg' alt='')
+                                    img(src='/assets/images/logos/6.svg' alt='' loading='lazy')
                         div
                             .logo-block
                                 a(href='#')
-                                    img(src='/assets/images/logos/7.svg' alt='')
+                                    img(src='/assets/images/logos/7.svg' alt='' loading='lazy')
                         div
                             .logo-block
                                 a(href='#')
-                                    img(src='/assets/images/logos/8.svg' alt='')
+                                    img(src='/assets/images/logos/8.svg' alt='' loading='lazy')
     // logo section end
     // footer
     include footer
@@ -1216,14 +1215,17 @@ block content
                                     a.btn.btn-solid(href='#') add to cart
                                     a.btn.btn-solid(href='#') view detail
     // Quick-view modal popup end
+
+    // TO DO UPDATE
     // cart start
-    #fixed_cart_icon.addcart_btm_popup
-        a.fixed_cart(href='#')
-            i.ti-shopping-cart
+    //#fixed_cart_icon.addcart_btm_popup
+    //    a.fixed_cart(href='#')
+    //        i.ti-shopping-cart
     // cart end
-    // theme setting
-    include theme-settings
-    // theme setting
+    // theme setting start
+    //include theme-settings
+    // theme setting end
+    // !!!
     // exit modal popup start
     #exit_popup.modal.fade.bd-example-modal-lg.theme-modal.exit-modal(tabindex='-1' role='dialog' aria-hidden='true')
         .modal-dialog.modal-lg.modal-dialog-centered(role='document')

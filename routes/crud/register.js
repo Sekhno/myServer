@@ -10,7 +10,10 @@ const COLLECTION_NAME = 'users';
 
 const router = express.Router();
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (
+    req,
+    res
+) => {
     const { email, password } = req.body;
     const user = await findByQuery(COLLECTION_NAME,{ email });
 
@@ -31,7 +34,10 @@ router.post('/login', async (req, res) => {
     res.send({ message: 'Successfully registered' });
 });
 
-router.post('/signup', async function (req, res) {
+router.post('/signup', async function (
+    req,
+    res
+) {
     const { email, password, name } = req.body;
     const userExists = await findByQuery(COLLECTION_NAME,{ email });
 
@@ -41,7 +47,12 @@ router.post('/signup', async function (req, res) {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await insertItem(COLLECTION_NAME, { name, email, password: hashedPassword, verified: false });
+    await insertItem(
+        COLLECTION_NAME,
+        {
+            name, email, password: hashedPassword, verified: false, session: { lastDrops: [] }
+        }
+    );
 
     const token = jwt.sign({ email }, secretKey, { expiresIn: '1h' });
 
