@@ -154,6 +154,22 @@ const fetchTopRatedProducts = async function (colName, sort, limit) {
     }
 }
 
+const fetchProductsByTag = async function (colName, sort, limit, tag) {
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const collection = database.collection(colName);
+        return await collection
+            .find({tags: tag})
+            .sort({ rating: sort })
+            .limit(limit)
+            .toArray();
+
+    } finally {
+        await client.close();
+    }
+}
+
 module.exports = {
     insertItem,
     deleteItem,
@@ -162,5 +178,6 @@ module.exports = {
     fetchAllDocumentsByQuery,
     fetchProductsByIds,
     findByQuery,
-    fetchTopRatedProducts
+    fetchTopRatedProducts,
+    fetchProductsByTag
 };
