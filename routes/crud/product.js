@@ -34,10 +34,6 @@ router.get('/cart', async (
         const ids = cart.map(item => item.productId);
         const products = await fetchProductsByIds('products', ids);
 
-        // cart.forEach(item => {
-        //     item.product = products.find(item => item._id === item.productId);
-        // })
-
         res.status(200).json({cart, products});
     } catch (e) {
         console.error(e)
