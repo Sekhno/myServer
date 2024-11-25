@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true })); // Збіль
 app.use('/', indexRouter);
 
 app.use('/product', productRouter);
-app.use('/api/v1/products', apiProductRouter);
+app.use('/api/v1/product', apiProductRouter);
 
 app.use('/register', registerRouter);
 app.use('/api/v1/register', apiRegisterRouter);

@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const jwt = require("jsonwebtoken");
+const { v4: uuidv4 } = require('uuid');
 const {
   fetchAllDocuments,
   findByQuery,
@@ -7,7 +9,6 @@ const {
   fetchTopRatedProducts,
   fetchProductsByTag
 } = require('../core/mongodb');
-const jwt = require("jsonwebtoken");
 const secretKey = require("../services/secret.service");
 
 router.use(async (
@@ -51,7 +52,24 @@ router.get('/', async (
     drops = await fetchProductsByIds('products', lastDrops);
   }
   else {
-    drops = await fetchTopRatedProducts('products', -1, 5)
+    const userID = uuidv4();
+    const sessionID = uuidv4();
+    const sessionTimestamp = new Date().toISOString();
+    const cookieValue = `LatestSessionID=${sessionID}&LatestSessionTimestamp=${sessionTimestamp}&ID=${userID}`;
+
+    drops = await fetchTopRatedProducts('products', -1, 5);
+
+    if (req.cookies['NextVisitor']) {
+      console.log(req.cookies['NextVisitor'])
+    }
+    else {
+      res.cookie('NextVisitor', cookieValue, {
+        httpOnly: false,
+        secure: false,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        sameSite: 'Strict', // Захист від CSRF
+      });
+    }
   }
 
   res.render('index', {

@@ -114,11 +114,8 @@ const fetchProductsByIds = async function (name, productIds) {
         const database = client.db(dbName);
         const collection = database.collection(name);
         const objectIds = productIds.map(id => new ObjectId(id));
-        const products = await collection.find({ _id: { $in: objectIds } }).toArray();
 
-        console.log(products);
-
-        return products;
+        return await collection.find({ _id: { $in: objectIds } }).toArray();
     } finally {
         await client.close();
     }
