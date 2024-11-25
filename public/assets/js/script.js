@@ -2016,7 +2016,9 @@ $(window).on('load', function () {
  24. Cookiebar
  ==========================*/
 window.setTimeout(function () {
-    $(".cookie-bar").addClass('show')
+    if (!document.cookie.includes('NextVisitor')) {
+        $(".cookie-bar").addClass('show')
+    }
 }, 5000);
 
 $('.cookie-bar .btn, .cookie-bar .btn-close').on('click', function () {
