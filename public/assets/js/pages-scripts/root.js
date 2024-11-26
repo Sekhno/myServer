@@ -50,15 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function openSearch() {
-        document.getElementById("search-overlay").style.display = "block";
-    }
-
-    function closeSearch() {
-        document.getElementById("search-overlay").style.display = "none";
-    }
-
-    function removeProductFromCart(id) {
+    function removeProductFromCart(id)
+    {
         return fetch('/api/v1/product/cart', {
             method: 'DELETE',
             headers: {
@@ -68,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    function retrieveCartData() {
+    function retrieveCartData()
+    {
         fetch('/api/v1/product/cart', {
             method: 'GET'
         }).then(async function (response) {

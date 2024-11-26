@@ -1,6 +1,8 @@
 const {fetchProductsByIds} = require("./mongodb");
 const {retrieveSimpleString} = require("./redis");
-const parseCookieString = (cookieString) => {
+
+const parseCookieString = (cookieString) =>
+{
     return cookieString.split('&').reduce((acc, pair) => {
         const [key, value] = pair.split('='); // Розділяємо ключ і значення
         acc[key] = value; // Додаємо в об'єкт
@@ -12,7 +14,8 @@ const parseCookieString = (cookieString) => {
  * Get Products for Visitor
  * @param req
  * */
-const getProductsFromCart = async function(req) {
+const getProductsFromCart = async function(req)
+{
     const visitor = req.cookies['NextVisitor'];
 
     const {LatestSessionID} = parseCookieString(visitor);

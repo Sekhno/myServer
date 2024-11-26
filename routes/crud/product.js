@@ -6,7 +6,6 @@ const {insertItem, deleteItem, fetchAllDocuments, fetchProductsByIds} = require(
 const Product = require('../../models/product');
 const COLLECTION_NAME = 'products';
 
-
 // GET Отримати корзину
 router.get('/cart', async (
     req,

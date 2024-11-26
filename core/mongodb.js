@@ -5,7 +5,6 @@ const PASSWORD = '*7WkKqhrpvEB%40kQ';
 const DATABASE = 'sample_mflix';
 const uri = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.yowhpdm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
-
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -14,7 +13,8 @@ const client = new MongoClient(uri, {
     },
 });
 
-async function run() {
+async function run()
+{
     try {
         console.log('Connecting to MongoDB...');
         await client.connect();
@@ -33,7 +33,8 @@ run().catch(console.dir);
 
 const dbName = DATABASE;
 
-const insertItem = async (colName, item) => {
+const insertItem = async (colName, item) =>
+{
     try {
         await client.connect();
         const database = client.db(dbName);
@@ -47,7 +48,8 @@ const insertItem = async (colName, item) => {
     }
 };
 
-const updateItem = async (colName, filter, update) => {
+const updateItem = async (colName, filter, update) =>
+{
     try {
         await client.connect();
         const database = client.db(dbName);
@@ -60,7 +62,8 @@ const updateItem = async (colName, filter, update) => {
     }
 }
 
-const deleteItem = async (colName, itemId) => {
+const deleteItem = async (colName, itemId) =>
+{
     try {
         await client.connect();
         const database = client.db(dbName);
@@ -80,7 +83,8 @@ const deleteItem = async (colName, itemId) => {
     }
 };
 
-const fetchAllDocuments = async (name) => {
+const fetchAllDocuments = async (name) =>
+{
     try {
         await client.connect();
         const database = client.db(dbName);
@@ -94,7 +98,8 @@ const fetchAllDocuments = async (name) => {
     }
 };
 
-const fetchAllDocumentsByQuery = async (name, query) => {
+const fetchAllDocumentsByQuery = async (name, query) =>
+{
     try {
         await client.connect();
         const database = client.db(dbName);
@@ -108,7 +113,8 @@ const fetchAllDocumentsByQuery = async (name, query) => {
     }
 };
 
-const fetchProductsByIds = async function (name, productIds) {
+const fetchProductsByIds = async function (name, productIds)
+{
     try {
         await client.connect();
         const database = client.db(dbName);
@@ -121,7 +127,8 @@ const fetchProductsByIds = async function (name, productIds) {
     }
 }
 
-const findByQuery = async (colName, query) => {
+const findByQuery = async (colName, query) =>
+{
     try {
         await client.connect();
         const database = client.db(dbName);
@@ -135,7 +142,8 @@ const findByQuery = async (colName, query) => {
     }
 }
 
-const fetchTopRatedProducts = async function (colName, sort, limit) {
+const fetchTopRatedProducts = async function (colName, sort, limit)
+{
     try {
         await client.connect();
         const database = client.db(dbName);
@@ -151,7 +159,8 @@ const fetchTopRatedProducts = async function (colName, sort, limit) {
     }
 }
 
-const fetchProductsByTag = async function (colName, sort, limit, tag) {
+const fetchProductsByTag = async function (colName, sort, limit, tag)
+{
     try {
         await client.connect();
         const database = client.db(dbName);

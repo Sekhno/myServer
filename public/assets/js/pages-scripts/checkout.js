@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const jQuery = $;
     const $subTotal = jQuery('.subtotal-count');
 
-    let productsM = null;
+    let _productsM = null;
 
     const calcTotalFromPrice = (products) =>
     {
@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         $subTotal.text(total);
     }
 
-    window.addEventListener("message", function({data}){
+    window.addEventListener('message', function({data})
+    {
         const { source } = data;
 
         if (source === 'changed cart') {
@@ -21,14 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const $cartsItem = jQuery('.product-element').data('productId', productId);
 
             $cartsItem.hide(100);
-            calcTotalFromPrice(productsM.filter(({_id}) => _id !== productId))
+            calcTotalFromPrice(_productsM.filter(({_id}) => _id !== productId))
         }
         else if (source === 'retrieved cart') {
             const { products } = data;
 
             calcTotalFromPrice(products);
 
-            productsM = products;
+            _productsM = products;
         }
     }, false);
 });
