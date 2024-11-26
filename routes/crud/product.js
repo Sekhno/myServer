@@ -1,20 +1,10 @@
 const express = require('express');
 const router = express.Router();
-
-
-const {storeSimpleString, retrieveSimpleString, storeMap, retrieveMap} = require('../../core/redis');
-
-const Product = require('../../models/product');
+const {parseCookieString, getProductsFromCart} = require('../../core/utils');
+const {storeSimpleString, retrieveSimpleString} = require('../../core/redis');
 const {insertItem, deleteItem, fetchAllDocuments, fetchProductsByIds} = require('../../core/mongodb');
+const Product = require('../../models/product');
 const COLLECTION_NAME = 'products';
-
-const parseCookieString = (cookieString) => {
-    return cookieString.split('&').reduce((acc, pair) => {
-        const [key, value] = pair.split('='); // Розділяємо ключ і значення
-        acc[key] = value; // Додаємо в об'єкт
-        return acc;
-    }, {});
-};
 
 // GET Отримати корзину
 router.get('/cart', async (
@@ -22,19 +12,10 @@ router.get('/cart', async (
     res
 ) =>
 {
-    console.log('GET CART')
     try {
-        const visitor = req.cookies['NextVisitor'];
-        const {LatestSessionID, ID} = parseCookieString(visitor);
+        const products = await getProductsFromCart(req);
 
-        console.log('LatestSessionID', LatestSessionID);
-        console.log('ID', ID);
-
-        const cart = JSON.parse(await retrieveSimpleString(LatestSessionID)) || [];
-        const ids = cart.map(item => item.productId);
-        const products = await fetchProductsByIds('products', ids);
-
-        res.status(200).json({cart, products});
+        res.status(200).json({products});
     } catch (e) {
         console.error(e)
     }
@@ -44,7 +25,8 @@ router.get('/cart', async (
 router.post('/cart', async (
     req,
     res
-) => {
+) =>
+{
     const visitor = req.cookies['NextVisitor'];
     const {LatestSessionID, ID} = parseCookieString(visitor);
 
@@ -164,9 +146,5 @@ router.delete('/:id', async (
         res.status(500).send(error);
     }
 });
-
-
-
-
 
 module.exports = router;
