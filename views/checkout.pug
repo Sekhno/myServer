@@ -1,0 +1,143 @@
+extends layout
+
+block content
+    // loader start
+    include loader
+    // loader end
+    // header start
+    include header
+    // header end
+    // breadcrumb start
+    .breadcrumb-section
+        .container
+            .row
+                .col-sm-6
+                    .page-title
+                        h2 Check-out
+                .col-sm-6
+                    nav.theme-breadcrumb(aria-label='breadcrumb')
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='./') Home
+                            li.breadcrumb-item.active(aria-current='page') Check-out
+    // breadcrumb End
+    // section start
+    section.section-b-space
+        .container
+            .checkout-page
+                .checkout-form
+                    form
+                        .row
+                            .col-lg-6.col-sm-12.col-xs-12
+                                .checkout-title
+                                    h3 Billing Details
+                                .row.check-out
+                                    .form-group.col-md-6.col-sm-6.col-xs-12
+                                        .field-label First Name
+                                        input(type='text' name='field-name' value='' placeholder='')
+                                    .form-group.col-md-6.col-sm-6.col-xs-12
+                                        .field-label Last Name
+                                        input(type='text' name='field-name' value='' placeholder='')
+                                    .form-group.col-md-6.col-sm-6.col-xs-12
+                                        .field-label Phone
+                                        input(type='text' name='field-name' value='' placeholder='')
+                                    .form-group.col-md-6.col-sm-6.col-xs-12
+                                        .field-label Email Address
+                                        input(type='text' name='field-name' value='' placeholder='')
+                                    .form-group.col-md-12.col-sm-12.col-xs-12
+                                        .field-label Country
+                                        select
+                                            option India
+                                            option South Africa
+                                            option United State
+                                            option Australia
+                                    .form-group.col-md-12.col-sm-12.col-xs-12
+                                        .field-label Address
+                                        input(type='text' name='field-name' value='' placeholder='Street address')
+                                    .form-group.col-md-12.col-sm-12.col-xs-12
+                                        .field-label Town/City
+                                        input(type='text' name='field-name' value='' placeholder='')
+                                    .form-group.col-md-12.col-sm-6.col-xs-12
+                                        .field-label State / County
+                                        input(type='text' name='field-name' value='' placeholder='')
+                                    .form-group.col-md-12.col-sm-6.col-xs-12
+                                        .field-label Postal Code
+                                        input(type='text' name='field-name' value='' placeholder='')
+                                    .form-group.col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                        input#account-option(type='checkbox' name='shipping-option')
+                                        label(for='account-option') Create An Account?
+                            .col-lg-6.col-sm-12.col-xs-12
+                                .checkout-details
+                                    .order-box
+                                        .title-box
+                                            div
+                                                | Product
+                                                span Total
+                                        ul.qty
+                                            each product in products
+                                                li.product-element(data-product-id=product.productId)
+                                                    | #{product.name} &times; #{product.quantity}
+                                                    span #{product.price} #{product.currency}
+                                        ul.sub-total
+                                            li
+                                                | Subtotal
+                                                span.count.subtotal-count $380.10
+                                            li
+                                                | Shipping
+                                                .shipping
+                                                    .shopping-option
+                                                        input#free-shipping(type='checkbox' name='free-shipping')
+                                                        label(for='free-shipping') Free Shipping
+                                                    .shopping-option
+                                                        input#local-pickup(type='checkbox' name='local-pickup')
+                                                        label(for='local-pickup') Local Pickup
+                                        ul.total
+                                            li
+                                                | Total
+                                                span.count.total-count $620.00
+                                    .payment-box
+                                        .upper-box
+                                            .payment-options
+                                                ul
+                                                    li
+                                                        .radio-option
+                                                            input#payment-1(type='radio' name='payment-group' checked='checked')
+                                                            label(for='payment-1')
+                                                                | Check Payments
+                                                                span.small-text
+                                                                    | Please send a check to Store
+                                                                    | Name, Store Street, Store Town, Store State /
+                                                                    | County, Store Postcode.
+                                                    li
+                                                        .radio-option
+                                                            input#payment-2(type='radio' name='payment-group')
+                                                            label(for='payment-2')
+                                                                | Cash On Delivery
+                                                                span.small-text
+                                                                    | Please send a check to Store
+                                                                    | Name, Store Street, Store Town, Store State /
+                                                                    | County, Store Postcode.
+                                                    li
+                                                        .radio-option.paypal
+                                                            input#payment-3(type='radio' name='payment-group')
+                                                            label(for='payment-3')
+                                                                | PayPal
+                                                                span.image
+                                                                    img(src='../assets/images/paypal.png' alt='')
+                                        .text-end
+                                            a.btn-solid.btn(href='#') Place Order
+    // section end
+    // footer start
+    include footer
+    // footer end
+    // theme setting
+    include theme-settings
+    // theme setting
+    // tap to top start
+    .tap-top
+        div
+            i.fa.fa-angle-double-up
+    // tap to top end
+    include vendor-scripts
+    script(src='/assets/js/pages-scripts/root.js')
+    script(src='/assets/js/pages-scripts/checkout.js')

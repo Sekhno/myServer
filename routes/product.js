@@ -3,13 +3,12 @@ const router = express.Router();
 
 const {fetchAllDocumentsByQuery} = require('../core/mongodb');
 
-router.get('/', async (req, res, next) => {
+router.get('/', async (
+    req,
+    res, next
+) =>
+{
     const query = req.query.name ? {name: { $regex: req.query.name, $options: 'i' }} : {};
-
-    // $or: [
-    //     { name: { $regex: 'apple', $options: 'i' } },
-    //     { description: { $regex: 'apple', $options: 'i' } }
-    // ]
 
     res.render('collection', {
         title: 'Internet Shop - Collection',
@@ -17,8 +16,15 @@ router.get('/', async (req, res, next) => {
     });
 });
 
-router.get('/:id', async (req, res, next) => {
-    res.render('product-page', { title: 'Internet Shop - Product Page' });
+
+router.get('/:id', async (
+    req,
+    res, next
+) =>
+{
+    res.render('product-page', {
+        title: 'Internet Shop - Product Page'
+    });
 });
 
 module.exports = router;

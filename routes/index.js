@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require('uuid');
+
 const {
   fetchAllDocuments,
   findByQuery,
@@ -9,7 +10,10 @@ const {
   fetchTopRatedProducts,
   fetchProductsByTag
 } = require('../core/mongodb');
+const {getProductsFromCart} = require('../core/utils');
 const secretKey = require("../services/secret.service");
+const {retrieveSimpleString} = require("../core/redis");
+
 
 router.use(async (
     req,
@@ -80,6 +84,29 @@ router.get('/', async (
     drops
   });
 });
+
+router.get('/cart', async (
+    req,
+    res, next
+) =>
+{
+  res.render('cart', {
+    title: 'Internet Shop - Shopping bag',
+    products : await getProductsFromCart(req)
+  });
+});
+
+router.get('/checkout', async (
+    req,
+    res, next
+) =>
+{
+  res.render('checkout', {
+    title: 'Internet Shop - Checkout',
+    products : await getProductsFromCart(req)
+  });
+});
+
 
 module.exports = router;
 

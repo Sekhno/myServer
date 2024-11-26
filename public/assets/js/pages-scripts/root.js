@@ -1,10 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // $(window).on('load', function () {
-    //     setTimeout(function () {
-    //         $('#exampleModal').modal('show');
-    //     }, 2500);
-    // });
     setTimeout(retrieveCartData);
+
+    window.addEventListener('message', async ({data}) =>
+    {
+        const { source } = data;
+
+        if (source === 'changed cart from cart page') {
+            const { productId } = data;
+
+            await removeProductFromCart(productId);
+
+            retrieveCartData();
+
+            postMessage({productId, source: 'changed cart'}, location.origin);
+        }
+    })
 
     const jQuery = $;
     const $cartContainer = jQuery('#cart-container');
@@ -38,9 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ id })
             }).then(retrieveCartData);
         }
-    })
-
-
+    });
 
     function openSearch() {
         document.getElementById("search-overlay").style.display = "block";
@@ -70,21 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             return response.json();
-        }).then(({cart, products}) => {
-            console.log('->', cart, products);
+        }).then(({products}) => {
+            postMessage({products, source: 'retrieved cart'}, location.origin);
 
-            $cartContainer.find('.is-cloned').remove()
+            $cartContainer.find('.is-cloned').remove();
 
-            if (cart && cart.length) {
+            if (products && products.length) {
                 let total = 0;
-                $countBadge.text(cart.length);
+                $countBadge.text(products.length);
 
-                cart.forEach(({quantity, productId}, i) => {
+                products.forEach(({quantity, productId}, i) => {
                     const {name, price, images, currency} = products.find(({_id}) => productId === _id)
                     const $clone = $media.clone();
-
-                    console.log('$media',$media);
-                    console.log('$clone',$clone)
 
                     $clone.addClass('is-cloned')
                     $clone.find('img').attr('src', images[0] + '?im=Resize,width=120');
@@ -96,13 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         await removeProductFromCart(productId);
 
                         $clone.hide(100);
-                        cart.splice(i, 1);
-                        $countBadge.text(cart.length);
+                        products.splice(i, 1);
+                        $countBadge.text(products.length);
 
-                        if (!cart.length) {
+                        if (!products.length) {
                             $countBadge.hide();
                             $cartContainer.find('ul').hide();
                         }
+
+                        postMessage({productId, source: 'changed cart'}, location.origin);
                     })
                     $clone.show();
 
