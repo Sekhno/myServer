@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {parseCookieString, getProductsFromCart} = require('../../core/utils');
 const {storeSimpleString, retrieveSimpleString} = require('../../core/redis');
-const {insertItem, deleteItem, fetchAllDocuments, updateItem, findByQuery} = require('../../core/mongodb');
+const {insertItem, deleteItem, fetchAllDocuments, updateItem, findByQuery, updateUserWishlist} = require('../../core/mongodb');
 const Product = require('../../models/product');
 const jwt = require("jsonwebtoken");
 const secretKey = require("../../services/secret.service");
@@ -73,22 +73,23 @@ router.post('/wishlist', async (
     res
 ) =>
 {
-    const token = req.cookies.token;
+    try {
+        const token = req.cookies.token;
 
-    if (!token) {
-        return res.status(400).send('Invalid token');
+        if (!token) {
+            return res.status(400).send('Invalid token');
+        }
+
+        const decoded = jwt.verify(token, secretKey);
+        const {email} = decoded;
+        const { wishlistIds } = req.body;
+        await updateUserWishlist(email, wishlistIds)
+
+        res.status(200).send({ message: 'Wishlist updated!' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(error);
     }
-
-    const decoded = jwt.verify(token, secretKey);
-    const {email} = decoded;
-    const productId = req.body.productId;
-    const { wishlist } = await findByQuery('users',{ email });
-
-    await updateItem('users', { email }, {
-        wishlist: (wishlist || []).push(productId)
-    });
-
-    res.status(200).send({ message: 'Wishlist updated!' });
 });
 
 // Create - Додати новий product

@@ -58,12 +58,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     jQuery('[title="Add to Wishlist"]').on('click', function(e)
     {
+        // if (!document.cookie.includes('token')) {
+        //     return location.href = "/register";
+        // }
+
         fetch('/api/v1/product/wishlist', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ productId: jQuery(this).data('product-id') }),
+            body: JSON.stringify({ wishlistIds: [jQuery(this).data('product-id')] }),
         }).then(async function(response){
             if (!response.ok) {
                 const error = await response.json()

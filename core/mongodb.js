@@ -113,7 +113,7 @@ const fetchAllDocumentsByQuery = async (name, query) =>
     }
 };
 
-const fetchProductsByIds = async function (name, productIds)
+const fetchCollectionByIds = async function (name, productIds)
 {
     try {
         await client.connect();
@@ -142,7 +142,7 @@ const findByQuery = async (colName, query) =>
     }
 }
 
-const fetchTopRatedProducts = async function (colName, sort, limit)
+const fetchTopRatedProducts = async (colName, sort, limit) =>
 {
     try {
         await client.connect();
@@ -159,7 +159,7 @@ const fetchTopRatedProducts = async function (colName, sort, limit)
     }
 }
 
-const fetchProductsByTag = async function (colName, sort, limit, tag)
+const fetchProductsByTag = async (colName, sort, limit, tag) =>
 {
     try {
         await client.connect();
@@ -176,14 +176,61 @@ const fetchProductsByTag = async function (colName, sort, limit, tag)
     }
 }
 
+const updateUserWishlist = async (email, wishlistIds) =>
+{
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const users = database.collection('users');
+        const result = await users.updateOne(
+            { email }, // Знайти користувача за email
+            { $set: { wishlist: wishlistIds.map(id => new ObjectId(id)) } }, // Додати/оновити поле wishlist
+            { upsert: true } // Створити новий документ, якщо він не існує
+        );
+
+        console.log('Updated User:', result);
+    } catch (err) {
+        console.error('Error updating user wishlist:', err);
+    } finally {
+        await client.close();
+    }
+}
+
+const getUserWishlist = async (email) =>
+{
+    try {
+        await client.connect();
+        const database = client.db(dbName);
+        const users = database.collection('users');
+
+        // Знайти користувача та повернути тільки поле wishlist
+        const user = await users.findOne(
+            { email }, // Знайти користувача за email
+            { projection: { wishlist: 1, _id: 0 } } // Повернути лише wishlist
+        );
+
+        if (!user) {
+            console.log('User not found');
+            return null;
+        }
+
+        return user.wishlist;
+    } catch (err) {
+        console.error('Error retrieving wishlist:', err);
+    } finally {
+        await client.close();
+    }
+}
+
 module.exports = {
     insertItem,
     deleteItem,
     updateItem,
     fetchAllDocuments,
     fetchAllDocumentsByQuery,
-    fetchProductsByIds,
+    fetchCollectionByIds,
     findByQuery,
     fetchTopRatedProducts,
-    fetchProductsByTag
+    fetchProductsByTag,
+    updateUserWishlist
 };
