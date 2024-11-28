@@ -598,12 +598,12 @@ header
                             .icon-nav
                                 ul
                                     li.onhover-div.mobile-search
-                                        div
-                                            img.img-fluid.blur-up.lazyload(src='/assets/images/icon/search.png' onclick='openSearch()' alt='')
-                                            i.ti-search(onclick='openSearch()')
+                                        div.search-wrap
+                                            img.img-fluid.blur-up.lazyload(src='/assets/images/icon/search.png' alt='')
+                                            i.ti-search
                                         #search-overlay.search-overlay
                                             div
-                                                span.closebtn(onclick='closeSearch()' title='Close Overlay') &times;
+                                                span.closebtn(title='Close Overlay') &times;
                                                 .overlay-content
                                                     .container
                                                         .row
