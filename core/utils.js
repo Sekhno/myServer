@@ -1,4 +1,4 @@
-const {fetchProductsByIds} = require("./mongodb");
+const {fetchCollectionByIds} = require("./mongodb");
 const {retrieveSimpleString} = require("./redis");
 
 const parseCookieString = (cookieString) =>
@@ -22,7 +22,7 @@ const getProductsFromCart = async function(req)
     const cart = JSON.parse(await retrieveSimpleString(LatestSessionID)) || [];
 
     const ids = cart.map(item => item.productId);
-    const products = await fetchProductsByIds('products', ids);
+    const products = await fetchCollectionByIds('products', ids);
 
     for (let i=0; i<products.length; i++) {
         const product = products[i];

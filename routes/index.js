@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 const {
   fetchAllDocuments,
   findByQuery,
-  fetchProductsByIds,
+  fetchCollectionByIds,
   fetchTopRatedProducts,
   fetchProductsByTag
 } = require('../core/mongodb');
@@ -53,7 +53,7 @@ router.get('/', async (
   if (req.user) {
     const {lastDrops} = req.user.session;
 
-    drops = await fetchProductsByIds('products', lastDrops);
+    drops = await fetchCollectionByIds('products', lastDrops);
   }
   else {
     const userID = uuidv4();

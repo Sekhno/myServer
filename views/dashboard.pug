@@ -293,84 +293,20 @@ block content
                                                             th(scope='col') Price
                                                             th(scope='col') Action
                                                     tbody
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/1.jpg' alt='')
-                                                            td
-                                                                span.mt-0 #125021
-                                                            td
-                                                                span Purple polo tshirt
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/2.jpg' alt='')
-                                                            td
-                                                                span.mt-0 #125367
-                                                            td
-                                                                span Sleevless white top
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/27.jpg' alt='')
-                                                            td
-                                                                span #125948
-                                                            td
-                                                                span multi color polo tshirt
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/28.jpg' alt='')
-                                                            td
-                                                                span #127569
-                                                            td
-                                                                span Candy red solid tshirt
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/33.jpg' alt='')
-                                                            td
-                                                                span #125753
-                                                            td
-                                                                span multicolored polo tshirt
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/34.jpg' alt='')
-                                                            td
-                                                                span #125021
-                                                            td
-                                                                span Men&apos;s Sweatshirt
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
+                                                        each val in wishlist
+                                                            tr
+                                                                td
+                                                                    a(href='javascript:void(0)')
+                                                                        img.blur-up.lazyloaded(src=val.images[0] + '?im=Resize,width=80' alt=val.name)
+                                                                td
+                                                                    span.mt-0 #125021
+                                                                td
+                                                                    span #{val.name}
+                                                                td
+                                                                    span.theme-color.fs-6 #{val.price} #{val.currency   }
+                                                                td
+                                                                    a.btn.btn-xs.btn-solid(href='javascript:void(0)')
+                                                                        | Move to Cart
                         #payment.tab-pane.fade
                             .row
                                 .col-12
@@ -603,10 +539,4 @@ block content
     include theme-settings
     // theme setting
     include vendor-scripts
-    script.
-        function openSearch() {
-            document.getElementById("search-overlay").style.display = "block";
-        }
-        function closeSearch() {
-            document.getElementById("search-overlay").style.display = "none";
-        }
+    script(src='/assets/js/pages-scripts/dashboard.js')
