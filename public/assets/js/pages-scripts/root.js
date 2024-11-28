@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const TARGET = '[data-bs-target]';
     const KEY_TARGET = 'bs-target';
 
-    jQuery(document).on('click',TARGET, function(e) {
+    jQuery(document).on('click',TARGET, function(e)
+    {
         if (jQuery(this).data(KEY_TARGET) === '#addtocart') {
             const id = jQuery(this).data('product-id');
 
@@ -48,6 +49,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ id })
             }).then(retrieveCartData);
         }
+    });
+
+    jQuery('.search-wrap').on('click', function(e)
+    {
+        jQuery('#search-overlay').show()
+    });
+
+    jQuery('[title="Add to Wishlist"]').on('click', function(e)
+    {
+        fetch('/api/v1/product/wishlist', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ productId: jQuery(this).data('product-id') }),
+        }).then(async function(response){
+            if (!response.ok) {
+                const error = await response.json()
+                throw new Error(error.message)
+            }
+        })
     });
 
     function removeProductFromCart(id)
@@ -124,4 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error(e)
         })
     }
+
+
 })

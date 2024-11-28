@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const {parseCookieString, getProductsFromCart} = require('../../core/utils');
 const {storeSimpleString, retrieveSimpleString} = require('../../core/redis');
-const {insertItem, deleteItem, fetchAllDocuments, fetchProductsByIds} = require('../../core/mongodb');
+const {insertItem, deleteItem, fetchAllDocuments, updateItem, findByQuery} = require('../../core/mongodb');
 const Product = require('../../models/product');
-const COLLECTION_NAME = 'products';
+const jwt = require("jsonwebtoken");
+const secretKey = require("../../services/secret.service");
 
 // GET Отримати корзину
 router.get('/cart', async (
@@ -65,7 +66,30 @@ router.delete('/cart', async (
     await storeSimpleString(LatestSessionID, JSON.stringify(cart));
 
     res.status(200).json({});
-})
+});
+
+router.post('/wishlist', async (
+    req,
+    res
+) =>
+{
+    const token = req.cookies.token;
+
+    if (!token) {
+        return res.status(400).send('Invalid token');
+    }
+
+    const decoded = jwt.verify(token, secretKey);
+    const {email} = decoded;
+    const productId = req.body.productId;
+    const { wishlist } = await findByQuery('users',{ email });
+
+    await updateItem('users', { email }, {
+        wishlist: (wishlist || []).push(productId)
+    });
+
+    res.status(200).send({ message: 'Wishlist updated!' });
+});
 
 // Create - Додати новий product
 router.post('/', async (
