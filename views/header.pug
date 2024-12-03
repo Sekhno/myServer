@@ -7,13 +7,13 @@ header
                 .main-menu
                     .menu-left
                         .navbar
-                            a(href='javascript:void(0)' onclick='openNav()')
+                            a(href='javascript:void(0)')
                                 .bar-style
                                     i.fa.fa-bars.sidebar-bar(aria-hidden='true')
                             #mySidenav.sidenav
-                                a.sidebar-overlay(href='javascript:void(0)' onclick='closeNav()')
+                                a.sidebar-overlay(href='javascript:void(0)')
                                 nav
-                                    div(onclick='closeNav()')
+                                    div
                                         .sidebar-back.text-start
                                             i.fa.fa-angle-left.pe-2(aria-hidden='true')
                                             |  Back
@@ -598,12 +598,12 @@ header
                             .icon-nav
                                 ul
                                     li.onhover-div.mobile-search
-                                        div
-                                            img.img-fluid.blur-up.lazyload(src='/assets/images/icon/search.png' onclick='openSearch()' alt='')
-                                            i.ti-search(onclick='openSearch()')
+                                        div.search-wrap
+                                            img.img-fluid.blur-up.lazyload(src='/assets/images/icon/search.png' alt='')
+                                            i.ti-search
                                         #search-overlay.search-overlay
                                             div
-                                                span.closebtn(onclick='closeSearch()' title='Close Overlay') &times;
+                                                span.closebtn(title='Close Overlay') &times;
                                                 .overlay-content
                                                     .container
                                                         .row
@@ -634,28 +634,16 @@ header
                                                     a(href='#') pound
                                                 li
                                                     a(href='#') doller
-                                    li.onhover-div.mobile-cart
+                                    li#cart-container.onhover-div.mobile-cart
                                         div
                                             img.img-fluid.blur-up.lazyload(src='/assets/images/icon/cart.png' alt='')
                                             i.ti-shopping-cart
-                                        span.cart_qty_cls 2
+                                        span.cart_qty_cls 0
                                         ul.show-div.shopping-cart
                                             li
                                                 .media
                                                     a(href='#')
                                                         img.me-3(alt='' src='/assets/images/fashion/product/1.jpg')
-                                                    .media-body
-                                                        a(href='#')
-                                                            h4 item name
-                                                        h4
-                                                            span 1 x $ 299.00
-                                                .close-circle
-                                                    a(href='#')
-                                                        i.fa.fa-times(aria-hidden='true')
-                                            li
-                                                .media
-                                                    a(href='#')
-                                                        img.me-3(alt='' src='/assets/images/fashion/product/2.jpg')
                                                     .media-body
                                                         a(href='#')
                                                             h4 item name
@@ -671,7 +659,7 @@ header
                                                         span $299.00
                                             li
                                                 .buttons
-                                                    a.view-cart(href='cart.html')
+                                                    a.view-cart(href='/cart')
                                                         | view
                                                         | cart
-                                                    a.checkout(href='#') checkout
+                                                    a.checkout(href='/checkout') checkout

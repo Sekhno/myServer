@@ -19,8 +19,6 @@ const apiRegisterRouter = require('./routes/crud/register');
 
 const storageRouter = require('./routes/storage');
 
-const backEndRouter = require('./routes/back-end');
-
 const app = express();
 
 // view engine setup
@@ -41,7 +39,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true })); // Збіль
 app.use('/', indexRouter);
 
 app.use('/product', productRouter);
-app.use('/api/v1/products', apiProductRouter);
+app.use('/api/v1/product', apiProductRouter);
 
 app.use('/register', registerRouter);
 app.use('/api/v1/register', apiRegisterRouter);
@@ -50,8 +48,6 @@ app.use('/account', accountRouter);
 app.use('/api/v1/account', apiAccountRouter);
 
 app.use('/storage', storageRouter);
-
-app.use('/admin', backEndRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

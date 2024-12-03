@@ -1,0 +1,101 @@
+extends layout
+
+block content
+    // loader start
+    include loader
+    // loader end
+    // header start
+    include header
+    // header end
+    // breadcrumb start
+    .breadcrumb-section
+        .container
+            .row
+                .col-sm-6
+                    .page-title
+                        h2 cart
+                .col-sm-6
+                    nav.theme-breadcrumb(aria-label='breadcrumb')
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='./') Home
+                            li.breadcrumb-item.active cart
+    // breadcrumb End
+    // section start
+    section.cart-section.section-b-space
+        .container
+            .row
+                .col-sm-12
+                    .cart_counter
+                        .countdownholder
+                            | Your cart will be expired in
+                            span#timer
+                            |  minutes!
+                        a.cart_checkout.btn.btn-solid.btn-xs(href='checkout.html') check out
+                .col-sm-12.table-responsive-xs
+                    table.table.cart-table
+                        thead
+                            tr.table-head
+                                th(scope='col') image
+                                th(scope='col') product name
+                                th(scope='col') price
+                                th(scope='col') quantity
+                                th(scope='col') action
+                                th(scope='col') total
+                        each product in products
+                            tbody(data-product-id=product.productId)
+                                tr
+                                    td
+                                        a(href='#')
+                                            img(src=product.images[0] + '?im=Resize,width=80' alt='Image by ' + product.name)
+                                    td
+                                        a(href='#') #{product.name}
+                                        .mobile-cart-content.row
+                                            .col
+                                                .qty-box
+                                                    .input-group
+                                                        input.form-control.input-number(type='text' name='quantity' min='1' value=product.quantity)
+                                            .col
+                                                h2.td-color #{product.price}
+                                            .col
+                                                h2.td-color
+                                                    a.icon(href='#')
+                                                        i.ti-close
+                                    td
+                                        h2 #{product.price}
+                                    td
+                                        .qty-box
+                                            .input-group
+                                                input.form-control.input-number(type='number' name='quantity' min='1' value=product.quantity)
+                                    td
+                                        a.icon(href='#')
+                                            i.ti-close
+                                    td
+                                        h2.td-color.sub-total #{product.quantity*product.price} #{product.currency}
+
+                    .table-responsive-md
+                        table.table.cart-table
+                            tfoot
+                                tr
+                                    td total price :
+                                    td
+                                        h2.cart-total 0.00 грн
+            .row.cart-buttons
+                .col-6
+                    a.btn.btn-solid(href='/') continue shopping
+                .col-6
+                    a.btn.btn-solid(href='/checkout') check out
+    // section end
+    // footer start
+    include footer
+    // footer end
+    // theme setting
+    include theme-settings
+    // theme setting
+    // tap to top start
+    .tap-top
+        div
+            i.fa.fa-angle-double-up
+    include vendor-scripts
+    script(src='/assets/js/pages-scripts/root.js')
+    script(src='/assets/js/pages-scripts/cart.js')

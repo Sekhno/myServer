@@ -1,0 +1,798 @@
+extends layout
+
+block content
+    // loader start
+    include loader
+    // loader end
+    // header start
+    include header
+    // header end
+    // breadcrumb start
+    .breadcrumb-section
+        .container
+            .row
+                .col-sm-6
+                    .page-title
+                        h2 collection
+                .col-sm-6
+                    nav.theme-breadcrumb(aria-label='breadcrumb')
+                        ol.breadcrumb
+                            li.breadcrumb-item
+                                a(href='/') home
+                            li.breadcrumb-item.active(aria-current='page') collection
+    // breadcrumb end
+    // section start
+    section.section-b-space.ratio_asos
+        .collection-wrapper
+            .container
+                .row
+                    .col-sm-3.collection-filter
+                        // side-bar colleps block stat
+                        .collection-filter-block
+                            // brand filter start
+                            .collection-mobile-back
+                                span.filter-back
+                                    i.fa.fa-angle-left(aria-hidden='true')
+                                    |  back
+                            .collection-collapse-block.open
+                                h3.collapse-block-title brand
+                                .collection-collapse-block-content
+                                    .collection-brand-filter
+                                        .form-check.collection-filter-checkbox
+                                            input#zara.form-check-input(type='checkbox')
+                                            label.form-check-label(for='zara') zara
+                                        .form-check.collection-filter-checkbox
+                                            input#vera-moda.form-check-input(type='checkbox')
+                                            label.form-check-label(for='vera-moda') vera-moda
+                                        .form-check.collection-filter-checkbox
+                                            input#forever-21.form-check-input(type='checkbox')
+                                            label.form-check-label(for='forever-21') forever-21
+                                        .form-check.collection-filter-checkbox
+                                            input#roadster.form-check-input(type='checkbox')
+                                            label.form-check-label(for='roadster') roadster
+                                        .form-check.collection-filter-checkbox
+                                            input#only.form-check-input(type='checkbox')
+                                            label.form-check-label(for='only') only
+                            // color filter start here
+                            .collection-collapse-block.open
+                                h3.collapse-block-title colors
+                                .collection-collapse-block-content
+                                    .color-selector
+                                        ul
+                                            li.color-1.active
+                                            li.color-2
+                                            li.color-3
+                                            li.color-4
+                                            li.color-5
+                                            li.color-6
+                                            li.color-7
+                            // size filter start here
+                            .collection-collapse-block.border-0.open
+                                h3.collapse-block-title size
+                                .collection-collapse-block-content
+                                    .collection-brand-filter
+                                        .form-check.collection-filter-checkbox
+                                            input#hundred.form-check-input(type='checkbox')
+                                            label.form-check-label(for='hundred') s
+                                        .form-check.collection-filter-checkbox
+                                            input#twohundred.form-check-input(type='checkbox')
+                                            label.form-check-label(for='twohundred') m
+                                        .form-check.collection-filter-checkbox
+                                            input#threehundred.form-check-input(type='checkbox')
+                                            label.form-check-label(for='threehundred') l
+                                        .form-check.collection-filter-checkbox
+                                            input#fourhundred.form-check-input(type='checkbox')
+                                            label.form-check-label(for='fourhundred') xl
+                            // price filter start here
+                            .collection-collapse-block.border-0.open
+                                h3.collapse-block-title price
+                                .collection-collapse-block-content
+                                    .wrapper.mt-3
+                                        .range-slider
+                                            input.js-range-slider(type='text' value='')
+                        // silde-bar colleps block end here
+                        // side-bar single product slider start
+                        .theme-card
+                            h5.title-border new product
+                            .offer-slider.slide-1
+                                div
+                                    .media
+                                        a(href='')
+                                            img.img-fluid.blur-up.lazyload(src='/assets/images/fashion/pro/1.jpg' alt='')
+                                        .media-body.align-self-center
+                                            .rating
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                            a(href='product-page(no-sidebar).html')
+                                                h6 Green Printed Dresses
+                                            h4 30.00
+                                    .media
+                                        a(href='')
+                                            img.img-fluid.blur-up.lazyload(src='/assets/images/fashion/pro/011.jpg' alt='')
+                                        .media-body.align-self-center
+                                            .rating
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                            a(href='product-page(no-sidebar).html')
+                                                h6 Pink Printed Dresses
+                                            h4 $35.00
+                                    .media
+                                        a(href='')
+                                            img.img-fluid.blur-up.lazyload(src='/assets/images/fashion/pro/16.jpg' alt='')
+                                        .media-body.align-self-center
+                                            .rating
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                            a(href='product-page(no-sidebar).html')
+                                                h6 Solid Green Dresses
+                                            h4 $33.00
+                                div
+                                    .media
+                                        a(href='')
+                                            img.img-fluid.blur-up.lazyload(src='/assets/images/fashion/pro/001.jpg' alt='')
+                                        .media-body.align-self-center
+                                            .rating
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                            a(href='product-page(no-sidebar).html')
+                                                h6 black White Printed Dresses
+                                            h4 $32.00
+                                    .media
+                                        a(href='')
+                                            img.img-fluid.blur-up.lazyload(src='/assets/images/fashion/pro/4.jpg' alt='')
+                                        .media-body.align-self-center
+                                            .rating
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                            a(href='product-page(no-sidebar).html')
+                                                h6 Dotted Black Dresses
+                                            h4 $38.00
+                                    .media
+                                        a(href='')
+                                            img.img-fluid.blur-up.lazyload(src='/assets/images/fashion/pro/19.jpg' alt='')
+                                        .media-body.align-self-center
+                                            .rating
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                                i.fa.fa-star
+                                            a(href='product-page(no-sidebar).html')
+                                                h6 Blue Printed Dresses
+                                            h4 $36.00
+                        // side-bar single product slider end
+                        // side-bar banner start here
+                        .collection-sidebar-banner
+                            a(href='#')
+                                img.img-fluid.blur-up.lazyload(src='/assets/images/side-banner.png' alt='')
+                        // side-bar banner end here
+                    .collection-content.col
+                        .page-main-content
+                            .row
+                                .col-sm-12
+                                    .top-banner-wrapper
+                                        a(href='#')
+                                            img.img-fluid.blur-up.lazyload(src='/assets/images/mega-menu/2.jpg' alt='')
+                                        .top-banner-content.small-section
+                                            h4 BIGGEST DEALS ON TOP BRANDS
+                                            p
+                                                | The trick to choosing the best wear for yourself is to keep in mind your
+                                                | body type, individual style, occasion and also the time of day or
+                                                | weather.
+                                                | In addition to eye-catching products from top brands, we also offer an
+                                                | easy 30-day return and exchange policy, free and fast shipping across
+                                                | all pin codes, cash or card on delivery option, deals and discounts,
+                                                | among other perks. So, sign up now and shop for westarn wear to your
+                                                | heart&rsquo;s content on Online Shop.
+                                    .collection-product-wrapper
+                                        .product-top-filter
+                                            .row
+                                                .col-xl-12
+                                                    .filter-main-btn
+                                                        span.filter-btn.btn.btn-theme
+                                                            i.fa.fa-filter(aria-hidden='true')
+                                                            |  Filter
+                                            .row
+                                                .col-12
+                                                    .product-filter-content
+                                                        .search-count
+                                                            h5 Showing Products 1-24 of 10 Result
+                                                        .collection-view
+                                                            ul
+                                                                li
+                                                                    i.fa.fa-th.grid-layout-view
+                                                                li
+                                                                    i.fa.fa-list-ul.list-layout-view
+                                                        .collection-grid-view
+                                                            ul
+                                                                li
+                                                                    img.product-2-layout-view(src='/assets/images/icon/2.png' alt='')
+                                                                li
+                                                                    img.product-3-layout-view(src='/assets/images/icon/3.png' alt='')
+                                                                li
+                                                                    img.product-4-layout-view(src='/assets/images/icon/4.png' alt='')
+                                                                li
+                                                                    img.product-6-layout-view(src='/assets/images/icon/6.png' alt='')
+                                                        .product-page-per-view
+                                                            select
+                                                                option(value='High to low')
+                                                                    | 24 Products Par Page
+                                                                option(value='Low to High')
+                                                                    | 50 Products Par Page
+                                                                option(value='Low to High')
+                                                                    | 100 Products Par Page
+                                                        .product-page-filter
+                                                            select
+                                                                option(value='High to low') Sorting items
+                                                                option(value='Low to High') 50 Products
+                                                                option(value='Low to High') 100 Products
+                                        .product-wrapper-grid
+                                            .row.margin-res
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/35.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/36.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            div
+                                                                .rating
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star
+                                                                    i.fa.fa-star
+                                                                a(href='product-page(no-sidebar).html')
+                                                                    h6 Candy red solid tshirt
+                                                                p
+                                                                    | Lorem Ipsum is simply dummy text of the printing and
+                                                                    | typesetting industry. Lorem Ipsum has been the
+                                                                    | industry&apos;s standard dummy text ever since the 1500s,
+                                                                    | when an unknown printer took a galley
+                                                                    | of type and scrambled it to make a type specimen
+                                                                    | book
+                                                                h4 $45.00
+                                                                ul.color-variant
+                                                                    li.bg-light0
+                                                                    li.bg-light1
+                                                                    li.bg-light2
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/27.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/28.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            .rating
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                            a(href='product-page(no-sidebar).html')
+                                                                h6 Purple polo tshirt
+                                                            p
+                                                                | Lorem Ipsum is simply dummy text of the printing and
+                                                                | typesetting industry. Lorem Ipsum has been the
+                                                                | industry&apos;s standard dummy text ever since the 1500s,
+                                                                | when an unknown printer took a galley
+                                                                | of type and scrambled it to make a type specimen book
+                                                            h4 $40.00
+                                                            ul.color-variant
+                                                                li.bg-light0
+                                                                li.bg-light1
+                                                                li.bg-light2
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/1.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/2.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            .rating
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                            a(href='product-page(no-sidebar).html')
+                                                                h6 Sleevless white top
+                                                            p
+                                                                | Lorem Ipsum is simply dummy text of the printing and
+                                                                | typesetting industry. Lorem Ipsum has been the
+                                                                | industry&apos;s standard dummy text ever since the 1500s,
+                                                                | when an unknown printer took a galley
+                                                                | of type and scrambled it to make a type specimen book
+                                                            h4 $65.00
+                                                            ul.color-variant
+                                                                li.bg-light0
+                                                                li.bg-light1
+                                                                li.bg-light2
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/33.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/34.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            .rating
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                            a(href='product-page(no-sidebar).html')
+                                                                h6 multi color polo tshirt
+                                                            p
+                                                                | Lorem Ipsum is simply dummy text of the printing and
+                                                                | typesetting industry. Lorem Ipsum has been the
+                                                                | industry&apos;s standard dummy text ever since the 1500s,
+                                                                | when an unknown printer took a galley
+                                                                | of type and scrambled it to make a type specimen book
+                                                            h4 $65.00
+                                                            ul.color-variant
+                                                                li.bg-light0
+                                                                li.bg-light1
+                                                                li.bg-light2
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/27.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/28.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            .rating
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                            a(href='product-page(no-sidebar).html')
+                                                                h6 Purple polo tshirt
+                                                            p
+                                                                | Lorem Ipsum is simply dummy text of the printing and
+                                                                | typesetting industry. Lorem Ipsum has been the
+                                                                | industry&apos;s standard dummy text ever since the 1500s,
+                                                                | when an unknown printer took a galley
+                                                                | of type and scrambled it to make a type specimen book
+                                                            h4 $40.00
+                                                            ul.color-variant
+                                                                li.bg-light0
+                                                                li.bg-light1
+                                                                li.bg-light2
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/35.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/36.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            .rating
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                            a(href='product-page(no-sidebar).html')
+                                                                h6 Candy red solid tshirt
+                                                            p
+                                                                | Lorem Ipsum is simply dummy text of the printing and
+                                                                | typesetting industry. Lorem Ipsum has been the
+                                                                | industry&apos;s standard dummy text ever since the 1500s,
+                                                                | when an unknown printer took a galley
+                                                                | of type and scrambled it to make a type specimen
+                                                                | book
+                                                            h4 $45.00
+                                                            ul.color-variant
+                                                                li.bg-light0
+                                                                li.bg-light1
+                                                                li.bg-light2
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/27.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/28.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            .rating
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                            a(href='product-page(no-sidebar).html')
+                                                                h6 Purple polo tshirt
+                                                            p
+                                                                | Lorem Ipsum is simply dummy text of the printing and
+                                                                | typesetting industry. Lorem Ipsum has been the
+                                                                | industry&apos;s standard dummy text ever since the 1500s,
+                                                                | when an unknown printer took a galley
+                                                                | of type and scrambled it to make a type specimen book
+                                                            h4 $40.00
+                                                            ul.color-variant
+                                                                li.bg-light0
+                                                                li.bg-light1
+                                                                li.bg-light2
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/1.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/2.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            .rating
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                            a(href='product-page(no-sidebar).html')
+                                                                h6 Sleevless white top
+                                                            p
+                                                                | Lorem Ipsum is simply dummy text of the printing and
+                                                                | typesetting industry. Lorem Ipsum has been the
+                                                                | industry&apos;s standard dummy text ever since the 1500s,
+                                                                | when an unknown printer took a galley
+                                                                | of type and scrambled it to make a type specimen book
+                                                            h4 $65.00
+                                                            ul.color-variant
+                                                                li.bg-light0
+                                                                li.bg-light1
+                                                                li.bg-light2
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/27.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/28.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            .rating
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                            a(href='product-page(no-sidebar).html')
+                                                                h6 Purple polo tshirt
+                                                            p
+                                                                | Lorem Ipsum is simply dummy text of the printing and
+                                                                | typesetting industry. Lorem Ipsum has been the
+                                                                | industry&apos;s standard dummy text ever since the 1500s,
+                                                                | when an unknown printer took a galley
+                                                                | of type and scrambled it to make a type specimen book
+                                                            h4 $40.00
+                                                            ul.color-variant
+                                                                li.bg-light0
+                                                                li.bg-light1
+                                                                li.bg-light2
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/1.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/2.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            .rating
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                            a(href='product-page(no-sidebar).html')
+                                                                h6 Sleevless white top
+                                                            p
+                                                                | Lorem Ipsum is simply dummy text of the printing and
+                                                                | typesetting industry. Lorem Ipsum has been the
+                                                                | industry&apos;s standard dummy text ever since the 1500s,
+                                                                | when an unknown printer took a galley
+                                                                | of type and scrambled it to make a type specimen book
+                                                            h4 $65.00
+                                                            ul.color-variant
+                                                                li.bg-light0
+                                                                li.bg-light1
+                                                                li.bg-light2
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/33.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/34.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            .rating
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                            a(href='product-page(no-sidebar).html')
+                                                                h6 multi color polo tshirt
+                                                            p
+                                                                | Lorem Ipsum is simply dummy text of the printing and
+                                                                | typesetting industry. Lorem Ipsum has been the
+                                                                | industry&apos;s standard dummy text ever since the 1500s,
+                                                                | when an unknown printer took a galley
+                                                                | of type and scrambled it to make a type specimen book
+                                                            h4 $65.00
+                                                            ul.color-variant
+                                                                li.bg-light0
+                                                                li.bg-light1
+                                                                li.bg-light2
+                                                .col-xl-3.col-6.col-grid-box
+                                                    .product-box
+                                                        .img-wrapper
+                                                            .front
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/1.jpg' alt='')
+                                                            .back
+                                                                a(href='#')
+                                                                    img.img-fluid.blur-up.lazyload.bg-img(src='/assets/images/pro3/2.jpg' alt='')
+                                                            .cart-info.cart-wrap
+                                                                button(data-bs-toggle='modal' data-bs-target='#addtocart' title='Add to cart')
+                                                                    i.ti-shopping-cart
+                                                                a(href='javascript:void(0)' title='Add to Wishlist')
+                                                                    i.ti-heart(aria-hidden='true')
+                                                                a(href='#' data-bs-toggle='modal' data-bs-target='#quick-view' title='Quick View')
+                                                                    i.ti-search(aria-hidden='true')
+                                                                a(href='compare.html' title='Compare')
+                                                                    i.ti-reload(aria-hidden='true')
+                                                        .product-detail
+                                                            .rating
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                                i.fa.fa-star
+                                                            a(href='product-page(no-sidebar).html')
+                                                                h6 Sleevless white top
+                                                            p
+                                                                | Lorem Ipsum is simply dummy text of the printing and
+                                                                | typesetting industry. Lorem Ipsum has been the
+                                                                | industry&apos;s standard dummy text ever since the 1500s,
+                                                                | when an unknown printer took a galley
+                                                                | of type and scrambled it to make a type specimen book
+                                                            h4 $65.00
+                                                            ul.color-variant
+                                                                li.bg-light0
+                                                                li.bg-light1
+                                                                li.bg-light2
+                                        .product-pagination
+                                            .theme-paggination-block
+                                                .row
+                                                    .col-xl-6.col-md-6.col-sm-12
+                                                        nav(aria-label='Page navigation')
+                                                            ul.pagination
+                                                                li.page-item
+                                                                    a.page-link(href='#' aria-label='Previous')
+                                                                        span(aria-hidden='true')
+                                                                            i.fa.fa-chevron-left(aria-hidden='true')
+                                                                        span.sr-only Previous
+                                                                li.page-item.active
+                                                                    a.page-link(href='#') 1
+                                                                li.page-item
+                                                                    a.page-link(href='#') 2
+                                                                li.page-item
+                                                                    a.page-link(href='#') 3
+                                                                li.page-item
+                                                                    a.page-link(href='#' aria-label='Next')
+                                                                        span(aria-hidden='true')
+                                                                            i.fa.fa-chevron-right(aria-hidden='true')
+                                                                        span.sr-only Next
+                                                    .col-xl-6.col-md-6.col-sm-12
+                                                        .product-search-count-bottom
+                                                            h5 Showing Products 1-24 of 10 Result
+    // section End
+    // footer start
+    include footer
+    // footer end
+    // Quick-view modal popup start
+    #quick-view.modal.fade.bd-example-modal-lg.theme-modal(tabindex='-1' role='dialog' aria-hidden='true')
+        .modal-dialog.modal-lg.modal-dialog-centered(role='document')
+            .modal-content.quick-view-modal
+                .modal-body
+                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                        span(aria-hidden='true') &times;
+                    .row
+                        .col-lg-6.col-xs-12
+                            .quick-view-img
+                                img.img-fluid.blur-up.lazyload(src='/assets/images/pro3/1.jpg' alt='')
+                        .col-lg-6.rtl-text
+                            .product-right
+                                h2 Women Pink Shirt
+                                h3 $32.96
+                                ul.color-variant
+                                    li.bg-light0
+                                    li.bg-light1
+                                    li.bg-light2
+                                .border-product
+                                    h6.product-title product details
+                                    p
+                                        | Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
+                                        | doloremque laudantium
+                                .product-description.border-product
+                                    .size-box
+                                        ul
+                                            li.active
+                                                a(href='javascript:void(0)') s
+                                            li
+                                                a(href='javascript:void(0)') m
+                                            li
+                                                a(href='javascript:void(0)') l
+                                            li
+                                                a(href='javascript:void(0)') xl
+                                    h6.product-title quantity
+                                    .qty-box
+                                        .input-group
+                                            span.input-group-prepend
+                                                button.btn.quantity-left-minus(type='button' data-type='minus' data-field='')
+                                                    i.ti-angle-left
+                                            input.form-control.input-number(type='text' name='quantity' value='1')
+                                            span.input-group-prepend
+                                                button.btn.quantity-right-plus(type='button' data-type='plus' data-field='')
+                                                    i.ti-angle-right
+                                .product-buttons
+                                    a.btn.btn-solid(href='#') add to cart
+                                    a.btn.btn-solid(href='#') view detail
+    // Quick-view modal popup end
+    // theme setting
+    include theme-settings
+    // theme setting
+    // tap to top start
+    .tap-top
+        div
+            i.fa.fa-angle-double-up
+    // tap to top end
+    include vendor-scripts
+    script.
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }

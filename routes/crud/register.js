@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 
+
 const {insertItem, findByQuery} = require('../../core/mongodb');
 const {sendConfirmationEmail} = require('../../services/email.service');
 const secretKey = require('../../services/secret.service');
@@ -10,7 +11,10 @@ const COLLECTION_NAME = 'users';
 
 const router = express.Router();
 
-router.post('/login', async (req, res) => {
+router.post('/login', async (
+    req,
+    res
+) => {
     const { email, password } = req.body;
     const user = await findByQuery(COLLECTION_NAME,{ email });
 
@@ -27,11 +31,14 @@ router.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign({ email: user.email }, secretKey, { expiresIn: '1h' });
-    res.cookie('token', token, { httpOnly: true, secure: true });
+    res.cookie('token', token, { httpOnly: true, secure: false });
     res.send({ message: 'Successfully registered' });
 });
 
-router.post('/signup', async function (req, res) {
+router.post('/signup', async function (
+    req,
+    res
+) {
     const { email, password, name } = req.body;
     const userExists = await findByQuery(COLLECTION_NAME,{ email });
 
@@ -41,7 +48,12 @@ router.post('/signup', async function (req, res) {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await insertItem(COLLECTION_NAME, { name, email, password: hashedPassword, verified: false });
+    await insertItem(
+        COLLECTION_NAME,
+        {
+            name, email, password: hashedPassword, verified: false, session: { lastDrops: [] }
+        }
+    );
 
     const token = jwt.sign({ email }, secretKey, { expiresIn: '1h' });
 

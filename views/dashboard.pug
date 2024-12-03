@@ -136,7 +136,7 @@ block content
                                                         .address-box
                                                             .top
                                                                 h6
-                                                                    | mark jecno
+                                                                    | #{user.name}
                                                                     span home
                                                             .middle
                                                                 .address
@@ -154,7 +154,7 @@ block content
                                                         .address-box
                                                             .top
                                                                 h6
-                                                                    | mark jecno
+                                                                    | #{user.name}
                                                                     span office
                                                             .middle
                                                                 .address
@@ -293,84 +293,20 @@ block content
                                                             th(scope='col') Price
                                                             th(scope='col') Action
                                                     tbody
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/1.jpg' alt='')
-                                                            td
-                                                                span.mt-0 #125021
-                                                            td
-                                                                span Purple polo tshirt
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/2.jpg' alt='')
-                                                            td
-                                                                span.mt-0 #125367
-                                                            td
-                                                                span Sleevless white top
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/27.jpg' alt='')
-                                                            td
-                                                                span #125948
-                                                            td
-                                                                span multi color polo tshirt
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/28.jpg' alt='')
-                                                            td
-                                                                span #127569
-                                                            td
-                                                                span Candy red solid tshirt
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/33.jpg' alt='')
-                                                            td
-                                                                span #125753
-                                                            td
-                                                                span multicolored polo tshirt
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
-                                                        tr
-                                                            td
-                                                                a(href='javascript:void(0)')
-                                                                    img.blur-up.lazyloaded(src='/assets/images/pro3/34.jpg' alt='')
-                                                            td
-                                                                span #125021
-                                                            td
-                                                                span Men&apos;s Sweatshirt
-                                                            td
-                                                                span.theme-color.fs-6 $49.54
-                                                            td
-                                                                a.btn.btn-xs.btn-solid(href='javascript:void(0)')
-                                                                    | Move to Cart
+                                                        each val in wishlist
+                                                            tr
+                                                                td
+                                                                    a(href='javascript:void(0)')
+                                                                        img.blur-up.lazyloaded(src=val.images[0] + '?im=Resize,width=80' alt=val.name)
+                                                                td
+                                                                    span.mt-0 #125021
+                                                                td
+                                                                    span #{val.name}
+                                                                td
+                                                                    span.theme-color.fs-6 #{val.price} #{val.currency   }
+                                                                td
+                                                                    a.btn.btn-xs.btn-solid(href='javascript:void(0)')
+                                                                        | Move to Cart
                         #payment.tab-pane.fade
                             .row
                                 .col-12
@@ -439,13 +375,13 @@ block content
                                                                 .left
                                                                     h6 email address
                                                                 .right
-                                                                    h6 mark.jecno@gmail.com
+                                                                    h6 #{user.email}
                                                         li
                                                             .details
                                                                 .left
                                                                     h6 Country / Region
                                                                 .right
-                                                                    h6 Downers Grove, IL
+                                                                    h6 #{user.address.country}
                                                         li
                                                             .details
                                                                 .left
@@ -469,19 +405,19 @@ block content
                                                                 .left
                                                                     h6 street address
                                                                 .right
-                                                                    h6 549 Sulphur Springs Road
+                                                                    h6 #{user.address.address}
                                                         li
                                                             .details
                                                                 .left
                                                                     h6 city/state
                                                                 .right
-                                                                    h6 Downers Grove, IL
+                                                                    h6 #{user.address.city}
                                                         li
                                                             .details
                                                                 .left
                                                                     h6 zip
                                                                 .right
-                                                                    h6 60515
+                                                                    h6 #{user.address.zip}
                                                 .dashboard-title.mt-lg-5.mt-3
                                                     h4 login details
                                                     a.edit-link(href='#') edit
@@ -493,7 +429,7 @@ block content
                                                                     h6 Email Address
                                                                 .right
                                                                     h6
-                                                                        | mark.jecno@gmail.com
+                                                                        | #{user.email}
                                                                         a.edit-link(href='#') edit
                                                         li
                                                             .details
@@ -501,7 +437,7 @@ block content
                                                                     h6 Phone No.
                                                                 .right
                                                                     h6
-                                                                        | +01 4485 5454
+                                                                        | #{user.details.phone}
                                                                         a.edit-link(href='#') Edit
                                                         li
                                                             .details
@@ -603,10 +539,4 @@ block content
     include theme-settings
     // theme setting
     include vendor-scripts
-    script.
-        function openSearch() {
-            document.getElementById("search-overlay").style.display = "block";
-        }
-        function closeSearch() {
-            document.getElementById("search-overlay").style.display = "none";
-        }
+    script(src='/assets/js/pages-scripts/dashboard.js')

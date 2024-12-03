@@ -6,9 +6,6 @@ const getWelcomeTemplate = require('../templates/wellcome');
 const { USER_GMAIL, USER_GMAIL_PASSWORD, BASE_URL  } = process.env;
 const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
-
-console.log(`USER_GMAIL_PASSWORD : ${USER_GMAIL_PASSWORD}`)
-
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
