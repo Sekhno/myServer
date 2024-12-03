@@ -58,9 +58,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     jQuery('[title="Add to Wishlist"]').on('click', function(e)
     {
-        // if (!document.cookie.includes('token')) {
-        //     return location.href = "/register";
-        // }
+        console.log('document.cookie.includes(\'token\')', document.cookie.includes('token'))
+        if (!document.cookie.includes('token')) {
+            return location.href = "/register";
+        }
 
         fetch('/api/v1/product/wishlist', {
             method: 'POST',
